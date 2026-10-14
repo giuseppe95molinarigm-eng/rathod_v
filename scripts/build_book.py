@@ -158,6 +158,23 @@ set_font(s, BODY_FONT, 10.5)
 para_fmt(s, after=3, line=1.18, align=WD_ALIGN_PARAGRAPH.LEFT, indent=Inches(0.28))
 s.paragraph_format.first_line_indent = Inches(-0.22)
 
+s = new_style("Recipe Title")
+set_font(s, HEAD_FONT, 18, bold=True, color=ACCENT)
+para_fmt(s, before=6, after=3, line=1.05, keep_next=True, align=WD_ALIGN_PARAGRAPH.LEFT)
+
+s = new_style("Recipe Tags")
+set_font(s, HEAD_FONT, 8.5, bold=True, color=GREY)
+para_fmt(s, after=8, keep_next=True, align=WD_ALIGN_PARAGRAPH.LEFT)
+
+s = new_style("Ingredient")
+set_font(s, BODY_FONT, 10)
+para_fmt(s, after=1.5, line=1.12, align=WD_ALIGN_PARAGRAPH.LEFT, indent=Inches(0.18))
+s.paragraph_format.first_line_indent = Inches(-0.14)
+
+s = new_style("Ingredient Group")
+set_font(s, HEAD_FONT, 9, bold=True, color=DARK)
+para_fmt(s, before=4, after=2, keep_next=True, align=WD_ALIGN_PARAGRAPH.LEFT)
+
 s = new_style("Table Text")
 set_font(s, BODY_FONT, 9)
 para_fmt(s, after=0, line=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
@@ -617,6 +634,52 @@ def fill_toc(first_p):
     p._p.append(r)
 
 
+CURRENT = {"chapter": ""}
+
+
+def recipe_title(text):
+    # each recipe opens on a left-hand page so its two pages face each other
+    sec = new_section(WD_SECTION.EVEN_PAGE)
+    configure_section(sec, CURRENT["chapter"], TITLE, first_blank=False)
+    doc.add_paragraph(text, style="Recipe Title")
+    RECIPES.append(text)
+
+
+def recipe_tags(text):
+    p = doc.add_paragraph(style="Recipe Tags")
+    r = p.add_run("  \u00b7  ".join(t.strip().upper() for t in text.split("|")))
+    sp = OxmlElement("w:spacing")
+    sp.set(qn("w:val"), "20")
+    r._r.get_or_add_rPr().append(sp)
+
+
+def recipe_meta(text):
+    items = [x.strip() for x in text.split("|")]
+    t = doc.add_table(rows=1, cols=len(items))
+    t.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table_setup(t, [TEXT_WIDTH / len(items)] * len(items), borders=False,
+                margins=(70, 80))
+    row_flags(t.rows[0])
+    for c, item in zip(t.rows[0].cells, items):
+        shade_cell(c, BOX_FILL["summary"])
+        label, _, value = item.partition(" ")
+        p = c.paragraphs[0]
+        p.style = styles["Table Text"]
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        r = p.add_run(label.upper() + "\n")
+        r.bold = True
+        r.font.name = HEAD_FONT
+        r.font.size = Pt(7.5)
+        r.font.color.rgb = ACCENT
+        r = p.add_run(value)
+        r.font.size = Pt(9.5)
+    spacer = doc.add_paragraph()
+    spacer.paragraph_format.space_after = Pt(0)
+
+
+RECIPES = []
+
+
 # ---------------------------------------------------------------------------
 # Markup parser
 # ---------------------------------------------------------------------------
@@ -659,7 +722,25 @@ def render_body(lines):
                 i += 1
             add_table(rows)
             continue
-        if line.startswith("### "):
+        if line.startswith("@recipe "):
+            flush()
+            recipe_title(line[8:].strip())
+        elif line.startswith("@tags "):
+            flush()
+            recipe_tags(line[6:])
+        elif line.startswith("@meta "):
+            flush()
+            recipe_meta(line[6:])
+        elif line.startswith("* "):
+            flush()
+            q = doc.add_paragraph(style="Ingredient")
+            r = q.add_run("\u25aa  ")
+            r.font.color.rgb = ACCENT
+            add_inline(q, line[2:])
+        elif line.startswith("#### "):
+            flush()
+            doc.add_paragraph(line[5:], style="Ingredient Group")
+        elif line.startswith("### "):
             flush()
             doc.add_paragraph(line[4:], style="Heading 3")
         elif line.startswith("## "):
@@ -737,6 +818,7 @@ def build():
             num, title = [x.strip() for x in head[9:].split("|")]
             sec = new_section()
             configure_section(sec, title, TITLE)
+            CURRENT["chapter"] = title
             doc.add_paragraph(f"CHAPTER {num}", style="Chapter Label")
             h = doc.add_paragraph(title, style="Heading 1")
             pbdr = OxmlElement("w:pBdr")
