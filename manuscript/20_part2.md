@@ -1,1 +1,1 @@
-@part Two | Treatments, Therapies & Lifestyle | You have more options than ever before. Knowing them helps you make the choices that are right for you.
+@part Two | Treatments, Therapies & Lifestyle | You have more options than any generation of women before you. Knowing them is how you get the help you deserve.

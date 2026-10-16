@@ -1,1 +1,1 @@
-@part Three | Nourishing Your Changing Body | Food will not fix everything, but it can help with almost everything. Here is how to make it work for you.
+@part Three | Nourishing Your Changing Body | Food won't fix everything, but it can help with almost everything. This is where your plate starts working for you.

@@ -145,6 +145,15 @@ s = new_style("Intro")
 set_font(s, BODY_FONT, 11.5, italic=True, color=GREY)
 para_fmt(s, before=4, after=14, line=1.3, align=WD_ALIGN_PARAGRAPH.LEFT)
 
+s = new_style("Scene")
+set_font(s, BODY_FONT, 10.5, italic=True, color=DARK)
+para_fmt(s, after=6, line=1.25, align=WD_ALIGN_PARAGRAPH.LEFT, indent=Inches(0.25))
+s.paragraph_format.right_indent = Inches(0.25)
+
+s = new_style("Bridge")
+set_font(s, BODY_FONT, 11, italic=True, color=ACCENT)
+para_fmt(s, before=18, after=0, line=1.3, align=WD_ALIGN_PARAGRAPH.CENTER)
+
 s = new_style("Box Title")
 set_font(s, HEAD_FONT, 10.5, bold=True, color=ACCENT)
 para_fmt(s, after=3, line=1.1, keep_next=True, align=WD_ALIGN_PARAGRAPH.LEFT)
@@ -334,9 +343,28 @@ def new_section(start=WD_SECTION.ODD_PAGE):
 # ---------------------------------------------------------------------------
 
 INLINE = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*)")
+MARK = re.compile(r"(==.+?==)")
+# ==text== marks author's personal moments for the client to confirm;
+# set HIGHLIGHT=0 to build without the yellow highlight
+SHOW_MARKS = os.environ.get("HIGHLIGHT", "1") != "0"
 
 
 def add_inline(p, text, size=None, color=None, bold=None):
+    for part in MARK.split(text):
+        if part.startswith("==") and part.endswith("==") and len(part) > 4:
+            start = len(p.runs)
+            _add_runs(p, part[2:-2], size, color, bold)
+            if SHOW_MARKS:
+                for r in p.runs[start:]:
+                    hl = OxmlElement("w:highlight")
+                    hl.set(qn("w:val"), "yellow")
+                    r._r.get_or_add_rPr().append(hl)
+        elif part:
+            _add_runs(p, part, size, color, bold)
+    return p
+
+
+def _add_runs(p, text, size=None, color=None, bold=None):
     for chunk in INLINE.split(text):
         if not chunk:
             continue
@@ -746,6 +774,14 @@ def render_body(lines):
         elif line.startswith("## "):
             flush()
             doc.add_paragraph(line[3:], style="Heading 2")
+        elif line.startswith(">> "):
+            flush()
+            orn = doc.add_paragraph("\u2022  \u2022  \u2022", style="Bridge")
+            orn.paragraph_format.keep_with_next = True
+            add_inline(doc.add_paragraph(style="Bridge"), line[3:]).paragraph_format.space_before = Pt(4)
+        elif line.startswith("%% "):
+            flush()
+            add_inline(doc.add_paragraph(style="Scene"), line[3:])
         elif line.startswith("> "):
             flush()
             add_inline(doc.add_paragraph(style="Intro"), line[2:])
