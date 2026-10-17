@@ -38,7 +38,7 @@ PAGES = json.load(open(sys.argv[2])) if len(sys.argv) > 2 and os.path.exists(sys
 TITLE = "The Menopause Diet for Busy Women"
 SUBTITLE = ("Easy Recipes, a 12-Week Meal Plan, and Simple Daily Practices "
             "to Support Weight Management, Energy, and Wellbeing")
-AUTHOR = "[Author Name]"
+AUTHOR = "[Pen Name]"
 
 BODY_FONT = "Cambria"
 HEAD_FONT = "Calibri"
@@ -46,9 +46,11 @@ ACCENT_HEX = "5A3E5D"
 ACCENT = RGBColor.from_string(ACCENT_HEX)
 GREY = RGBColor(0x59, 0x59, 0x59)
 DARK = RGBColor(0x26, 0x26, 0x26)
-BOX_FILL = {"summary": "F3EFF3", "try": "F6F1EA", "evidence": "EEF2F0", "note": "F2F2F2"}
+BOX_FILL = {"summary": "F3EFF3", "try": "F6F1EA", "evidence": "EEF2F0", "note": "F2F2F2",
+            "why": "EEF2F0", "swaps": "F2F2F2", "important": "F7ECEC"}
 BOX_LABEL = {"summary": "Chapter Summary", "try": "Try This Week",
-             "evidence": "What the Evidence Says", "note": "Good to Know"}
+             "evidence": "What the Evidence Says", "note": "Good to Know",
+             "why": "Why It Helps", "swaps": "Swaps & Variations", "important": "Important"}
 
 doc = Document()
 styles = doc.styles
@@ -512,7 +514,14 @@ def add_box(kind, title, lines):
     cell_borders(c, left=ACCENT_HEX)
     p = c.paragraphs[0]
     p.style = styles["Box Title"]
-    p.add_run((title or BOX_LABEL.get(kind, "")).upper())
+    label = BOX_LABEL.get(kind, "")
+    # evidence and note boxes always carry their family label, so readers
+    # can spot the box types promised in "How to Use This Book"
+    if title and kind in ("evidence", "note", "important") and title.lower() != label.lower():
+        text = f"{label}: {title}"
+    else:
+        text = title or label
+    p.add_run(text.upper())
     for line in lines:
         if line.startswith("- "):
             q = c.add_paragraph(style="Box Text")

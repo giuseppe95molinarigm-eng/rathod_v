@@ -7,21 +7,19 @@ Let me say this as clearly as I can: **you are not broken. You are changing.**
 
 ## Why I Wrote This Book
 
-==I was forty-four the first time I woke up soaked through, heart racing, convinced I was coming down with something. I wasn't. It happened again the next night, and the one after that. Within a few months I was sleeping in four-hour scraps, forgetting the names of people I'd known for years, and crying at commercials. I put it all down to stress. I had a full-time job, two teenagers and a mother who needed more help every month. Of course I was tired.==
+I haven't been through menopause myself, not yet. But I've watched it up close. I watched my mother struggle through hers, and in recent years I've watched friends I love struggle through theirs. Each time, I found myself wishing they had something simple to hold on to: a clear explanation of what was happening, and practical help with what to do about it.
 
-==When I finally told my doctor, she ran some blood tests, said everything looked "normal," and suggested I try to relax. I left that appointment feeling more alone than when I'd walked in.==
+So I started reading: the guidelines menopause specialists follow, and the research on food, sleep, strength and mood. What concerned me most wasn't that the answers didn't exist. Many of them did. It was how few of them seemed to reach the women who needed them.
 
-==It took me almost two years, a lot of late-night reading and a second doctor who actually listened before I understood what was happening: I was in perimenopause, and nobody had thought to mention it. Not my doctor, not my friends, not my own mother, who, when I finally asked her, said, "Oh, that. We just got on with it."==
+Too many women are told, one way or another, to just get on with it. I don't want you to just get on with it.
 
-==I don't want you to just get on with it.== Somewhere along the way I started changing what I ate, not to shrink myself, but to feel steadier. More protein at breakfast. More plants. Fewer late glasses of wine. I started lifting weights in my living room. None of it was dramatic, but together it changed how my days felt. ==The night sweats eased. The 3 p.m. crash stopped running my afternoons. I felt like myself again, a stronger, calmer version.==
-
-This is the book I wish someone had handed me at forty-four.
+This book is my attempt to close that gap. It brings the best of the evidence together in plain language, with recipes and plans built for a real, busy life. It's the book I wish my mother had had, the one I want my friends to have now, and the one I'll reach for when my own turn comes.
 
 ## What You'll Find Here
 
 Menopause is a natural stage of life that every woman who lives long enough will reach. Yet for generations it's been whispered about, joked about or simply ignored. If you've felt confused, dismissed or alone, that isn't a personal failing. It's a gap in the information we've been given.
 
-In the pages ahead you'll find a clear, kind explanation of what's happening in your body during perimenopause, menopause and the years beyond. You'll learn how food can support your energy, sleep, mood and comfort, and how to care for your bones, heart, muscles and brain for the long haul. And you'll find tools built for the busiest of lives: quick recipes, snacks you can make in five minutes, a 12-week meal plan with grocery lists, and a 30-day plan of yoga, strength and calming practices that needs nothing more than a little floor space.
+In the pages ahead you'll find a clear, kind explanation of what's happening in your body during perimenopause, menopause and the years beyond. You'll learn how food can support your energy, sleep, mood and comfort, and how to care for your bones, heart, muscles and brain for the long haul. And you'll find tools built for the busiest of lives: quick recipes, five-minute snacks and a 12-week meal plan with grocery lists. There's also a 30-day plan of yoga, strength and calming practices that needs nothing more than a little floor space.
 
 Here's what this book will never do. It will never shame you: there are no "good" or "bad" foods here, no punishing rules and no before-and-after pressure, because your worth has nothing to do with the number on a scale. It will never promise miracles: food is powerful, but it isn't magic, and some symptoms need medical support, which is perfectly okay. And it will never ask you to change everything at once. One breakfast is a fine place to start.
 
@@ -31,4 +29,4 @@ Make a cup of tea, find a comfortable chair, and let's begin.
 
 With warmth,
 
-*[Author Name]*
+*[Pen Name]*

@@ -13,7 +13,7 @@ This book is meant to be used, not just read. Dip in wherever you need to, on wh
 
 If you only take one thing from this book, take these three words. They're the method behind every chapter, recipe and meal plan in it.
 
-- **Anchor** every meal with protein, about 25 to 30 grams. It's the nutrient midlife muscles need most and the one most of us eat least of in the morning.
+- **Anchor** every meal with protein, about 20 to 30 grams. It's the nutrient midlife muscles need most and the one most of us eat least of in the morning.
 - **Add** plants: vegetables, fruit, beans, whole grains, nuts and seeds, aiming for 30 different ones a week.
 - **Adapt** to where you are: your stage of the transition, your symptoms, your appetite and your life this week.
 
@@ -30,7 +30,15 @@ You'll meet Anchor, Add, Adapt properly in Chapter 9, and you'll see it at work 
 | Part Five | The 12-week meal plan with grocery lists and prep plans | Structure and routine |
 | Part Six | The 30-day yoga, strength and calm plan | Movement, stress and sleep |
 
-Along the way you'll see a few recurring boxes. **Try This Week** suggests one or two specific things to test. **What the Evidence Says** tells you where the science is strong and where it's still emerging. **Good to Know** adds practical tips and safety notes. Some chapters end with a checklist you can photograph or print.
+Along the way you'll see the same few features, so you always know where to look:
+
+- **Chapter Summary:** every chapter in Parts One to Three ends with one, followed by a one-line bridge to the next chapter.
+- **Try This Week:** one or two specific things to test.
+- **What the Evidence Says:** where the science is strong and where it's still emerging.
+- **Good to Know:** practical tips and reminders.
+- **Important:** safety notes and when to see a doctor.
+- **Checklists:** in the most practical chapters, a list you can photograph or print.
+- **In the recipes:** every recipe shows an estimated protein figure per serving, plus **Swaps & Variations** and **Why It Helps** boxes.
 
 ## Recipe Labels
 
