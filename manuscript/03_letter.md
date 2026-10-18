@@ -1,7 +1,7 @@
 @front A Letter to You
 Dear reader,
 
-If you've picked up this book, there's a good chance something has changed. Maybe you're waking at 3 a.m. for no obvious reason. Maybe your periods have started to behave like they have a mind of their own, or have stopped altogether. Maybe the jeans that fitted perfectly last spring now sit a little tighter around the middle, even though you haven't changed a thing. Maybe you've cried in the car, snapped at someone you love, or walked into a room and forgotten why you were there, and wondered quietly whether something is wrong with you.
+If you've picked up this book, there's a good chance something has changed. Maybe you're waking at 3 a.m. for no obvious reason. Maybe your periods have started to behave like they have a mind of their own, or have stopped altogether. Maybe the jeans that fit perfectly last spring now sit a little tighter around the middle, even though you haven't changed a thing. Maybe you've cried in the car, snapped at someone you love, or walked into a room and forgotten why you were there, and wondered quietly whether something is wrong with you.
 
 Let me say this as clearly as I can: **you are not broken. You are changing.**
 
@@ -29,4 +29,4 @@ Make a cup of tea, find a comfortable chair, and let's begin.
 
 With warmth,
 
-*[Pen Name]*
+*Neha Menon*

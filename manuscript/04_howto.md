@@ -48,8 +48,8 @@ Along the way you'll see the same few features, so you always know where to look
 | DF | Dairy-free (or "DF option") |
 | V | Vegetarian |
 | VG | Vegan (or "VG option") |
-| Make-Ahead | Keeps well for batch cooking or freezing |
-| 30 min | Ready in 30 minutes or less (the quickest show their exact time, e.g., "10 min") |
+| Make-Ahead | Keeps at least 3 days in the fridge, or freezes well |
+| 30 min | Ready in 30 minutes or less, prep and cooking included (the quickest show their exact time, e.g., "10 min") |
 
 ## Take It One Change at a Time
 
