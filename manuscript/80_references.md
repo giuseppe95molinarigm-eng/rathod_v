@@ -1,5 +1,5 @@
 @front References
-These are the main guidelines and studies behind the information in Chapters 1 to 14. Where a fact appears in more than one chapter, the source is listed where it's first discussed. Guidelines are updated regularly, so for medical decisions always check the latest version with your healthcare provider.
+These are the main guidelines and studies behind the information in this book. Where a fact appears in more than one chapter, the source is listed where it's first discussed. Guidelines are updated regularly, so for medical decisions always check the latest version with your healthcare provider.
 
 ## Guidelines and Position Statements
 
@@ -36,7 +36,7 @@ These are the main guidelines and studies behind the information in Chapters 1 t
 - Rossouw JE, et al. Risks and benefits of estrogen plus progestin in healthy postmenopausal women: principal results from the Women's Health Initiative randomized controlled trial. *JAMA*. 2002;288(3):321–333.
 - Manson JE, et al. Menopausal hormone therapy and long-term all-cause and cause-specific mortality: the Women's Health Initiative randomized trials. *JAMA*. 2017;318(10):927–938.
 - US Food and Drug Administration. Announcement of labeling changes for menopausal hormone therapy, including removal of breast cancer, cardiovascular disease and probable dementia from the boxed warning. November 2025; first updated labels approved February 2026.
-- US Food and Drug Administration. Drug safety communication: boxed warning for risk of rare but serious liver injury with fezolinetant (Veozah). December 2024.
+- US Food and Drug Administration. Drug safety communication: risk of rare but serious liver injury with fezolinetant (Veozah). September 2024; boxed warning added December 2024.
 - Elinzanetant (Lynkuet) US prescribing information. October 2025.
 - Lederman S, et al. Fezolinetant for treatment of moderate-to-severe vasomotor symptoms associated with menopause (SKYLIGHT 1): a phase 3 randomised controlled study. *The Lancet*. 2023;401(10382):1091–1102.
 - Pinkerton JV, et al. Elinzanetant for the treatment of vasomotor symptoms associated with menopause: OASIS 1 and 2 randomized clinical trials. *JAMA*. 2024;332(16):1343–1354.
@@ -59,6 +59,12 @@ These are the main guidelines and studies behind the information in Chapters 1 t
 - Morris MC, et al. MIND diet associated with reduced incidence of Alzheimer's disease. *Alzheimer's & Dementia*. 2015;11(9):1007–1014.
 - Howatson G, et al. Effect of tart cherry juice (*Prunus cerasus*) on melatonin levels and enhanced sleep quality. *European Journal of Nutrition*. 2012;51(8):909–916.
 - Hall KD, et al. Ultra-processed diets cause excess calorie intake and weight gain: an inpatient randomized controlled trial of ad libitum food intake. *Cell Metabolism*. 2019;30(1):67–77.
+
+## Part Six: Yoga, Strength & Calm
+
+- Cramer H, et al. Yoga for menopausal symptoms: a systematic review and meta-analysis. *Maturitas*. 2018;109:13–25.
+- Bone Health & Osteoporosis Foundation. Exercise for your bone health. bonehealthandosteoporosis.org.
+- Watson SL, et al. The LIFTMOR randomized controlled trial (see Part One).
 
 ## Recipes
 

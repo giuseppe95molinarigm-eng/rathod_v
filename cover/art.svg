@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="A bowl of greens with a sprig of leaves, drawn in soft plum and sage tones">
+  <circle cx="200" cy="200" r="190" fill="#EADFE8"/>
+  <circle cx="200" cy="200" r="150" fill="#F6F1EA"/>
+  <path d="M95 215 Q200 330 305 215 Z" fill="#5A3E5D"/>
+  <path d="M95 215 L305 215" stroke="#5A3E5D" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="160" cy="203" rx="38" ry="16" fill="#8FA88A" transform="rotate(-20 160 203)"/>
+  <ellipse cx="205" cy="196" rx="40" ry="17" fill="#6F8F6A" transform="rotate(12 205 196)"/>
+  <ellipse cx="246" cy="204" rx="34" ry="14" fill="#A9C19F" transform="rotate(-8 246 204)"/>
+  <circle cx="182" cy="188" r="11" fill="#D98C6A"/>
+  <circle cx="228" cy="183" r="9" fill="#E3B04B"/>
+  <circle cx="262" cy="190" r="7" fill="#C2577A"/>
+  <path d="M200 120 C 200 150, 200 165, 200 180" stroke="#6F8F6A" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M200 140 C 175 120, 160 125, 152 132 C 168 146, 186 146, 200 140 Z" fill="#8FA88A"/>
+  <path d="M200 128 C 225 108, 240 113, 248 120 C 232 134, 214 134, 200 128 Z" fill="#6F8F6A"/>
+</svg>

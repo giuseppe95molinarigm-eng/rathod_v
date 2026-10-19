@@ -1,0 +1,14 @@
+@page { margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Inter", sans-serif; color: #2B2230; }
+.wrap { position: relative; background: #F6F1EA; overflow: hidden; }
+.band { position: absolute; background: #5A3E5D; }
+.title { font-family: "Inter Display", "Inter", sans-serif; font-weight: 800; color: #5A3E5D; line-height: 1.02; letter-spacing: -0.01em; }
+.subtitle { color: #4A4150; line-height: 1.35; }
+.author { font-family: "Inter Display", sans-serif; font-weight: 600; color: #F6F1EA; letter-spacing: 0.18em; text-transform: uppercase; }
+.kicker { font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6F8F6A; }
+.blurb h2 { font-family: "Inter Display", sans-serif; color: #5A3E5D; font-weight: 800; line-height: 1.1; }
+.blurb p, .blurb li { line-height: 1.45; color: #2B2230; }
+.blurb ul { list-style: none; }
+.blurb li::before { content: "\2022"; color: #6F8F6A; font-weight: 800; display: inline-block; width: 1em; }
+.spine-text { position: absolute; transform: rotate(90deg); transform-origin: center; white-space: nowrap; color: #F6F1EA; font-family: "Inter Display", sans-serif; }

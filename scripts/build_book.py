@@ -31,7 +31,7 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "manuscript")
+SRC = os.environ.get("BOOK_SRC", os.path.join(ROOT, "manuscript"))
 OUT = sys.argv[1]
 PAGES = json.load(open(sys.argv[2])) if len(sys.argv) > 2 and os.path.exists(sys.argv[2]) else {}
 
@@ -351,7 +351,24 @@ MARK = re.compile(r"(==.+?==)")
 SHOW_MARKS = os.environ.get("HIGHLIGHT", "1") != "0"
 
 
+REFS = []          # (key, kind, text) page references used by the indexes
+REF = re.compile(r"\{\{([rp]):([^}]+)\}\}")
+
+
+def resolve_refs(text):
+    def sub(m):
+        kind, target = m.group(1), m.group(2).strip()
+        key = f"ref|{kind}|{target}"
+        if key not in [k for k, _, _ in REFS]:
+            REFS.append((key, kind, target))
+        return str(PAGES.get(key, "00"))
+    out = REF.sub(sub, text)
+    # collapse repeated page numbers in a list ("13, 13, 41" -> "13, 41")
+    return re.sub(r"\b(\d+)(, \1\b)+", r"\1", out)
+
+
 def add_inline(p, text, size=None, color=None, bold=None):
+    text = resolve_refs(text).replace("[ ] ", "\u2610 ")
     for part in MARK.split(text):
         if part.startswith("==") and part.endswith("==") and len(part) > 4:
             start = len(p.runs)
@@ -367,6 +384,16 @@ def add_inline(p, text, size=None, color=None, bold=None):
 
 
 def _add_runs(p, text, size=None, color=None, bold=None):
+    if "\u2610" in text:
+        # checkbox glyphs get a font that has them (avoids color-emoji fallback)
+        pieces = text.split("\u2610")
+        for k, piece in enumerate(pieces):
+            if k:
+                r = p.add_run("\u2610")
+                r.font.name = "DejaVu Sans"
+            if piece:
+                _add_runs(p, piece, size, color, bold)
+        return p
     for chunk in INLINE.split(text):
         if not chunk:
             continue
@@ -460,6 +487,13 @@ TEXT_WIDTH = 6 - 0.8 - 0.6
 def add_table(rows):
     header, body = rows[0], rows[1:]
     n = len(header)
+    # optional fixed width for a column: "Day@0.95" in the header (inches)
+    fixed = {}
+    for k, h in enumerate(header):
+        m = re.match(r"(.*)@([\d.]+)$", h)
+        if m:
+            header[k] = m.group(1)
+            fixed[k] = float(m.group(2))
     # width proportional to the longest text in each column
     lens = [max(len(r[i]) if i < len(r) else 0 for r in rows) for i in range(n)]
     weights = [max(8, min(l, 70)) ** 0.75 for l in lens]
@@ -477,11 +511,23 @@ def add_table(rows):
             widths[i] = minimum
         for i in wide:
             widths[i] -= extra * widths[i] / total_wide
+    if fixed:
+        free = [k for k in range(n) if k not in fixed]
+        rest = TEXT_WIDTH - sum(fixed.values())
+        tot = sum(widths[k] for k in free) or 1
+        widths = [fixed[k] if k in fixed else rest * widths[k] / tot for k in range(n)]
     t = doc.add_table(rows=1 + len(body), cols=n)
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     table_setup(t, widths)
     for ri, row in enumerate([header] + body):
         row_flags(t.rows[ri], header=(ri == 0))
+        if ri and all(not c.strip() for c in row[1:]) and n > 2:
+            # blank rows are for writing in: give them room
+            trpr = t.rows[ri]._tr.get_or_add_trPr()
+            h = OxmlElement("w:trHeight")
+            h.set(qn("w:val"), str(int((0.34 if n >= 6 else 0.78) * 1440)))
+            h.set(qn("w:hRule"), "atLeast")
+            trpr.append(h)
         for ci in range(n):
             c = t.rows[ri].cells[ci]
             p = c.paragraphs[0]
@@ -496,7 +542,11 @@ def add_table(rows):
             else:
                 if ri % 2 == 0:
                     shade_cell(c, "F7F4F7")
-                add_inline(p, txt)
+                parts = txt.split(" <br> ")
+                for k, part in enumerate(parts):
+                    if k:
+                        p.add_run().add_break()
+                    add_inline(p, part)
                 if ci == 0:
                     for r in p.runs:
                         r.bold = True
@@ -533,7 +583,7 @@ def add_box(kind, title, lines):
             q.paragraph_format.left_indent = Inches(0.22)
             q.paragraph_format.first_line_indent = Inches(-0.2)
             r = q.add_run("☐  ")
-            r.font.name = "Segoe UI Symbol"
+            r.font.name = "DejaVu Sans"
             add_inline(q, line[4:])
         else:
             add_inline(c.add_paragraph(style="Box Text"), line)
@@ -682,6 +732,38 @@ def recipe_title(text):
     RECIPES.append(text)
 
 
+SNACK = {"start": None}
+NEWPAGE = {"on": False}
+
+
+def close_snack():
+    """Keep a finished snack's paragraphs together on one page."""
+    if SNACK["start"] is None:
+        return
+    paras = doc.paragraphs[SNACK["start"]:]
+    for q in paras[:-1]:
+        q.paragraph_format.keep_with_next = True
+    SNACK["start"] = None
+
+
+def snack_title(text):
+    close_snack()
+    SNACK["start"] = len(doc.paragraphs)
+    p = doc.add_paragraph(text, style="Recipe Title")
+    p.paragraph_format.space_before = Pt(20)
+    for r in p.runs:
+        r.font.size = Pt(14)
+    RECIPES.append(text)
+
+
+def snack_info(text):
+    p = doc.add_paragraph(style="Recipe Tags")
+    r = p.add_run("  \u00b7  ".join(t.strip().upper() for t in text.split("|")))
+    sp = OxmlElement("w:spacing")
+    sp.set(qn("w:val"), "20")
+    r._r.get_or_add_rPr().append(sp)
+
+
 def recipe_tags(text):
     p = doc.add_paragraph(style="Recipe Tags")
     r = p.add_run("  \u00b7  ".join(t.strip().upper() for t in text.split("|")))
@@ -759,9 +841,21 @@ def render_body(lines):
                 i += 1
             add_table(rows)
             continue
+        if line.strip() == "@newpage":
+            flush()
+            NEWPAGE["on"] = True
+            i += 1
+            continue
         if line.startswith("@recipe "):
             flush()
+            close_snack()
             recipe_title(line[8:].strip())
+        elif line.startswith("@snack "):
+            flush()
+            snack_title(line[7:].strip())
+        elif line.startswith("@info "):
+            flush()
+            snack_info(line[6:])
         elif line.startswith("@tags "):
             flush()
             recipe_tags(line[6:])
@@ -773,6 +867,7 @@ def render_body(lines):
             q = doc.add_paragraph(style="Ingredient")
             r = q.add_run("\u25aa  ")
             r.font.color.rgb = ACCENT
+            r.font.name = "DejaVu Sans"
             add_inline(q, line[2:])
         elif line.startswith("#### "):
             flush()
@@ -782,7 +877,11 @@ def render_body(lines):
             doc.add_paragraph(line[4:], style="Heading 3")
         elif line.startswith("## "):
             flush()
-            doc.add_paragraph(line[3:], style="Heading 2")
+            close_snack()
+            h2 = doc.add_paragraph(line[3:], style="Heading 2")
+            if NEWPAGE["on"]:
+                h2.paragraph_format.page_break_before = True
+                NEWPAGE["on"] = False
         elif line.startswith(">> "):
             flush()
             orn = doc.add_paragraph("\u2022  \u2022  \u2022", style="Bridge")
@@ -804,7 +903,7 @@ def render_body(lines):
             flush()
             p = doc.add_paragraph(style="Check Item")
             r = p.add_run("☐  ")
-            r.font.name = "Segoe UI Symbol"
+            r.font.name = "DejaVu Sans"
             add_inline(p, line[4:])
         elif re.match(r"\d+\. ", line):
             flush()
@@ -818,6 +917,7 @@ def render_body(lines):
             para_buf.append(line.strip())
         i += 1
     flush()
+    close_snack()
 
 
 def build():
@@ -883,7 +983,8 @@ def build():
     doc.core_properties.title = TITLE
     doc.core_properties.author = AUTHOR
     doc.save(OUT)
-    json.dump([[t, x] for t, x, _ in TOC_ENTRIES],
+    json.dump({"toc": [[t, x] for t, x, _ in TOC_ENTRIES],
+               "refs": [list(r) for r in REFS]},
               open(os.path.splitext(OUT)[0] + ".toc.json", "w"), indent=0)
     print("saved", OUT, len(TOC_ENTRIES), "toc entries")
 
