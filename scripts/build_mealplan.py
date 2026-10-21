@@ -110,13 +110,13 @@ WEEKS = [
       ("SCRAM", "LO:CURRY", "CHILI")],
      ["Bake the egg muffins and press and cube two blocks of calcium-set tofu.",
       "Make two jars of chia pudding with soy milk.",
-      "Stuff the peppers ahead for Tuesday.",
+      "Cook the quinoa for Tuesday's stuffed peppers and keep it in the fridge.",
       "Check your vitamin D: is a supplement right for you? Ask at your next appointment."]),
     (5, "Balancing Blood Sugar",
      "This week is about steady energy: never more than four or five hours without eating, protein and fiber at every meal, and a planned snack for the time of day your cravings usually strike. Try a 10-minute walk after dinner on at least three evenings.",
      ["EGGS", "APPLE", "TRAIL"],
-     [("OATS", "LO:CHILI", "MOROC"), ("MUFF", "LO:MOROC", "BOLO"), ("OATS", "CHICK", "SHRIMP"),
-      ("MUFF", "CHICK", "LO:BOLO"), ("OATS", "CHICK", "PEANUT"), ("CHILLA", "LO:PEANUT", "SALMON"),
+     [("OATS", "LO:CHILI", "MOROC"), ("MUFF", "CHICK", "BOLO"), ("OATS", "CHICK", "SHRIMP"),
+      ("MUFF", "CHICK", "LO:BOLO"), ("OATS", "LO:MOROC", "PEANUT"), ("CHILLA", "LO:PEANUT", "SALMON"),
       ("SCRAM", "LENT", "MEAT")],
      ["Make the Lemon Herb Chicken Grain Bowls for three lunches.",
       "Bake the egg muffins and make two jars of overnight oats.",
@@ -145,8 +145,8 @@ WEEKS = [
     (8, "Happy Gut, Less Bloating",
      "This week includes a fermented food every day (yogurt, kefir, miso) and keeps fiber steady rather than sudden. Eat slowly, take a short walk after meals, and notice which foods leave you comfortable and which don't.",
      ["KEFIR", "CHIA", "EDAMAME"],
-     [("CONGEE", "LO:DAL", "SALMON"), ("BOWL", "MISO", "MOROC"), ("CONGEE", "LO:MOROC", "COD"),
-      ("BOWL", "LO:MOROC", "STIR"), ("OATS", "LO:STIR", "BOLO"), ("OATS", "MISO", "SHRIMP"),
+     [("CONGEE", "LO:DAL", "SALMON"), ("BOWL", "MISO", "MOROC"), ("CONGEE", "MISO", "COD"),
+      ("BOWL", "LO:MOROC", "STIR"), ("OATS", "LO:STIR", "BOLO"), ("OATS", "LO:MOROC", "SHRIMP"),
       ("SCRAM", "LO:BOLO", "CHILI")],
      ["Make a pot of congee for three breakfasts.",
       "Marinate and bake the miso tofu for two lunches.",
@@ -222,6 +222,33 @@ for name in sorted(os.listdir(MS)):
             INGREDIENTS[cur].append(line[2:])
         if cur and line.startswith("1. "):
             in_ing = False
+
+# fridge life ("Keeps N days" in @meta, None for "Best fresh") and whether
+# the recipe says it can be frozen
+KEEPS, FREEZES, SNACKS = {}, set(), set()
+for name in sorted(os.listdir(MS)):
+    if not re.match(r"4[1-6]_ch1[3-6]\.md", name):
+        continue
+    cur = None
+    for line in open(os.path.join(MS, name), encoding="utf-8"):
+        m = re.match(r"@(recipe|snack) (.+)", line)
+        if m:
+            cur = m.group(2).strip()
+        elif cur and line.startswith("@meta"):
+            k = re.search(r"Keeps (\d+) days?", line)
+            KEEPS[cur] = int(k.group(1)) if k else None
+        elif cur and line.startswith("@info"):
+            KEEPS[cur] = None
+            SNACKS.add(cur)
+        elif cur and KEEPS.get(cur, 0) is None and cur in SNACKS and \
+                re.match(r"\d\. .*([Kk]eep|[Ss]tor)", line):
+            # snacks give their fridge life in the method
+            k = re.search(r"(?:up to|for) (\d+|a|1) (days?|weeks?)", line)
+            if k:
+                n = 1 if k.group(1) in ("a", "1") else int(k.group(1))
+                KEEPS[cur] = n * (7 if k.group(2).startswith("week") else 1)
+        elif cur and re.match(r"- \*\*(Freezing|Storage):\*\*.*\bfreez", line):
+            FREEZES.add(cur)
 
 missing = [c for c, n in CODES.items() if n not in PROTEIN]
 assert not missing, f"recipes not found: {missing}"
@@ -335,6 +362,67 @@ def grocery(week_codes):
     return grouped
 
 
+# what a prep step makes ahead, recognised from its wording
+PREP_KEYS = {
+    "MUFF": r"egg muffins", "OATS": r"overnight oats", "SOUP": r"Tuscan",
+    "LENT": r"lentil salad", "TABB": r"tabbouleh", "DAL": r"\bdal\b",
+    "CHICK": r"Chicken Grain Bowls", "MISO": r"miso tofu", "CONGEE": r"congee",
+    "POZ": r"pozole", "CHILI": r"chili\b", "BOLO": r"Bolognese", "SOBA": r"soba",
+    "PEPPER": r"stuff the peppers", "CHIA": r"chia pudding",
+    "EGGS": r"boil (a batch of )?eggs|hard-boil eggs", "BITES": r"energy bites",
+}
+def code_ok(code, prepped):
+    """Snacks only matter here when they are made ahead in the prep plan."""
+    return code not in prepped or KEEPS[CODES[code]] is None
+
+
+COOKED = {}   # code -> plan day (0 = Sunday before week 1) it was last cooked
+
+
+def storage_notes(num, days, prep, snacks):
+    """Check every make-ahead meal and leftover against its recipe's fridge
+    life, and return the extra prep steps that keep each one in time:
+    freezing a portion when the recipe freezes, a fresh batch when it doesn't."""
+    sunday = (num - 1) * 7
+    prepped = set()
+    for code, pat in PREP_KEYS.items():
+        step = next((x for x in prep if re.search(pat, x, re.I)), None)
+        if step and "Saturday" not in step:
+            COOKED[code] = sunday
+            prepped.add(code)
+    late, notes, midweek = {}, [], []
+    for d, (meals, extra) in enumerate(zip(days, snacks), 1):
+        today = sunday + d
+        for slot, c in zip("BLD" + "S" * len(extra), list(meals) + extra):
+            if slot == "S" and code_ok(c, prepped):
+                continue
+            if c == "FLEX":
+                continue
+            code = c.replace("LO:", "")
+            name = CODES[code]
+            keeps = KEEPS[name]
+            batch = c.startswith("LO:") or (code in prepped and code in COOKED) or (
+                slot != "D" and keeps and code in COOKED and COOKED[code] > sunday)
+            if not batch or keeps is None:
+                COOKED[code] = today
+                continue
+            if today - COOKED[code] <= keeps:
+                continue
+            if name in FREEZES:
+                late.setdefault(code, []).append(DAYS[d - 1])
+            else:
+                COOKED[code] = today - 1
+                midweek.append(f"On {DAYS[d - 2]} evening, make a fresh batch of the {name} "
+                             f"for the rest of the week: it keeps {keeps} days in the fridge.")
+    for code, when in late.items():
+        name = CODES[code]
+        notes.insert(0, f"Freeze the {' and '.join(when)} portion{'s' if len(when) > 1 else ''} "
+                        f"of the {name} once cooled (it keeps {KEEPS[name]} days in the fridge), "
+                        f"then move {'them' if len(when) > 1 else 'it'} to the fridge to thaw "
+                        f"the night before.")
+    return notes, midweek
+
+
 def protein_of(code):
     if code == "FLEX":
         return FLEX_PROTEIN
@@ -353,7 +441,7 @@ out = []
 out.append("@chapter 18 | Weeks 1–12")
 out.append("> Twelve weeks, eighty-four days, and not one evening spent wondering what's for dinner.")
 out.append("")
-out.append("Each week has a focus, a 7-day menu, a snack plan, a shopping list and a Sunday prep plan, followed by a short check-in. The protein column shows the estimated total for each day, including the planned snacks; every day lands between about 80 and 110 grams, in line with the 2025–2030 Dietary Guidelines range of roughly 82 to 109 grams for a woman of around 150 pounds. Leftovers are planned in, so most dinners also become a lunch.")
+out.append("Each week has a focus, a 7-day menu, a snack plan, a shopping list and a Sunday prep plan, followed by a short check-in. The protein column shows the estimated total for each day, including the planned snacks; every day lands between about 80 and 110 grams, in line with the 2025–2030 Dietary Guidelines range of roughly 82 to 109 grams for a woman of around 150 pounds. Leftovers are planned in, so most dinners also become a lunch, and every one is eaten within the fridge time given in its recipe; where a batch has to last longer, the prep plan tells you what to freeze or make fresh midweek.")
 out.append("")
 out.append("Quantities are in the recipes. Before you shop, check your pantry staples: olive oil, salt and pepper, spices, garlic, stock, canned tomatoes, oats and grains. And remember, this is a menu to borrow from, not a test: swap any meal for another with a similar protein figure, and skip whatever doesn't suit you.")
 out.append("")
@@ -369,7 +457,7 @@ for num, theme, focus, snacks, days, prep in WEEKS:
     out.append("")
     out.append("| Day@0.95 | Meals |")
     out.append("|---|---|")
-    used = set()
+    used, snack_days = set(), []
     for d, (b, l, n) in enumerate(days):
         base = protein_of(b) + protein_of(l) + protein_of(n)
         rot = snacks[d % len(snacks):] + snacks[:d % len(snacks)]
@@ -387,6 +475,7 @@ for num, theme, focus, snacks, days, prep in WEEKS:
             if c != "FLEX":
                 used.add(c.replace("LO:", ""))
         used.update(chosen)
+        snack_days.append(chosen)
         snack_txt = " + ".join(CODES[s] for s in chosen) or "Fruit, if you're hungry"
         out.append(f"| {DAYS[d]} <br> ≈{total} g protein | **Breakfast:** {label(b)} <br> **Lunch:** {label(l)} <br> **Dinner:** {label(n)} <br> **Snack:** {snack_txt} |")
     out.append("")
@@ -402,9 +491,13 @@ for num, theme, focus, snacks, days, prep in WEEKS:
             out.append("")
     out.append("### Sunday prep (60 to 90 minutes)")
     out.append("")
-    for i, step in enumerate(prep, 1):
+    freeze, midweek = storage_notes(num, days, prep, snack_days)
+    for i, step in enumerate(prep + freeze, 1):
         out.append(f"{i}. {step}")
     out.append("")
+    if midweek:
+        out.append("**Midweek top-up:** " + " ".join(midweek))
+        out.append("")
     out.append(":::try End-of-week check-in")
     out.append("[ ] How was my energy this week, from 1 to 10?")
     out.append("[ ] How did I sleep, and did anything help?")

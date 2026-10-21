@@ -279,8 +279,7 @@ with tempfile.TemporaryDirectory() as tmp:
 # give the cover image alt text (the only image in the ebook)
 import shutil
 import zipfile
-ALT = (f"Cover of {TITLE} by {AUTHOR}: the title in plum lettering on a cream "
-       "background, above a simple illustration of a bowl of greens with a sprig of leaves.")
+ALT = os.environ.get("COVER_ALT", f"Cover of {TITLE} by {AUTHOR}")
 tmp_epub = OUT + ".tmp"
 with zipfile.ZipFile(OUT) as zin, zipfile.ZipFile(tmp_epub, "w") as zout:
     for item in zin.infolist():

@@ -725,11 +725,19 @@ CURRENT = {"chapter": ""}
 
 
 def recipe_title(text):
-    # each recipe opens on a left-hand page so its two pages face each other
-    sec = new_section(WD_SECTION.EVEN_PAGE)
+    # each recipe opens on a left-hand page so its two pages face each other.
+    # LibreOffice drops mirrored margins in even-page sections, so recipes use
+    # plain new-page sections and make_book.sh lists the ones that need a
+    # blank page in front (PAGES["_pad"]) to land on the left.
+    if text in PAGES.get("_pad", []):
+        sec = new_section(WD_SECTION.NEW_PAGE)
+        configure_section(sec, "", "", numbers=False, first_blank=False)
+        doc.add_paragraph()
+    sec = new_section(WD_SECTION.NEW_PAGE)
     configure_section(sec, CURRENT["chapter"], TITLE, first_blank=False)
     doc.add_paragraph(text, style="Recipe Title")
     RECIPES.append(text)
+    SPREADS.append([text, CURRENT["chapter"]])
 
 
 SNACK = {"start": None}
@@ -797,6 +805,7 @@ def recipe_meta(text):
 
 
 RECIPES = []
+SPREADS = []           # (recipe, chapter) for recipes that open a spread
 
 
 # ---------------------------------------------------------------------------
@@ -984,7 +993,7 @@ def build():
     doc.core_properties.author = AUTHOR
     doc.save(OUT)
     json.dump({"toc": [[t, x] for t, x, _ in TOC_ENTRIES],
-               "refs": [list(r) for r in REFS]},
+               "refs": [list(r) for r in REFS], "spreads": SPREADS},
               open(os.path.splitext(OUT)[0] + ".toc.json", "w"), indent=0)
     print("saved", OUT, len(TOC_ENTRIES), "toc entries")
 

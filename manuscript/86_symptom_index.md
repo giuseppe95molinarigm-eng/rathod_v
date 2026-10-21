@@ -13,7 +13,7 @@ Find it fast: the pages where each symptom is explained, and where you'll find p
 - **Heavy or irregular periods:** {{p:The First Signs Are Easy to Miss}}, {{p:When to Pick Up the Phone}}
 - **Hot flashes and night sweats:** {{p:Why your internal thermostat goes haywire}}, {{p:The Symptoms That Can Peak Now}}, {{p:What really happened in 2002}}, {{p:When Hormones Aren't Right for You}}, {{p:Changing How Hot Flashes Feel}}, {{p:What tends to light the fuse}}
 - **Irritability, rage and tears:** {{p:When Big Feelings Feel Bigger}}
-- **Joint aches and stiffness:** {{p:Joint pain and stiffness are common}}, {{p:Joint Aches and Stiffness}}
+- **Joint aches and stiffness:** {{p:Joint pain and stiffness are common}}, {{p:Joint Aches and Stiffness}}, {{p:The 5-Minute Morning Stretch}}
 - **Low libido:** {{p:Desire can change too}}
 - **Palpitations, itchy skin, tinnitus and frozen shoulder:** {{p:The Symptoms Nobody Warned You About}}
 - **Skin, hair and nails:** {{p:Skin, Hair and Nails}}
