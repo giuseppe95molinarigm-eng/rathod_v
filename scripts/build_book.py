@@ -36,8 +36,8 @@ OUT = sys.argv[1]
 PAGES = json.load(open(sys.argv[2])) if len(sys.argv) > 2 and os.path.exists(sys.argv[2]) else {}
 
 TITLE = "The Menopause Diet for Busy Women"
-SUBTITLE = ("Easy Recipes, a 12-Week Meal Plan, and Simple Daily Practices "
-            "to Support Weight Management, Energy, and Wellbeing")
+SUBTITLE = ("Quick, Delicious Recipes and a Simple Meal Plan to Balance Hormones, "
+            "Boost Energy and Feel Like Yourself Again")
 AUTHOR = "Neha Menon"
 
 BODY_FONT = "Cambria"
@@ -198,12 +198,16 @@ s = new_style("Copyright")
 set_font(s, BODY_FONT, 8.5, color=DARK)
 para_fmt(s, after=6, line=1.25, align=WD_ALIGN_PARAGRAPH.LEFT)
 
+# title page colors follow the cover: deep green title, coral second line
+COVER_GREEN = RGBColor.from_string("042F1C")
+COVER_CORAL = RGBColor.from_string("E24F2E")
+
 s = new_style("Title Big")
-set_font(s, HEAD_FONT, 30, bold=True, color=ACCENT)
-para_fmt(s, before=120, after=16, line=1.0, align=WD_ALIGN_PARAGRAPH.CENTER)
+set_font(s, HEAD_FONT, 32, bold=True, color=COVER_GREEN)
+para_fmt(s, before=110, after=18, line=1.0, align=WD_ALIGN_PARAGRAPH.CENTER)
 
 s = new_style("Title Sub")
-set_font(s, BODY_FONT, 13, italic=True, color=GREY)
+set_font(s, HEAD_FONT, 13, bold=True, color=COVER_GREEN)
 para_fmt(s, after=40, line=1.3, align=WD_ALIGN_PARAGRAPH.CENTER)
 
 s = new_style("Title Author")
@@ -626,7 +630,12 @@ def title_pages():
         header_text(part, "", WD_ALIGN_PARAGRAPH.CENTER)
     for part in (sec.footer, sec.even_page_footer, sec.first_page_footer):
         footer_number(part, False)
-    doc.add_paragraph(TITLE, style="Title Big")
+    p = doc.add_paragraph(style="Title Big")
+    first, _, second = TITLE.partition(" for ")
+    p.add_run(first)
+    p.add_run().add_break()
+    r = p.add_run("for " + second)
+    r.font.color.rgb = COVER_CORAL
     doc.add_paragraph(SUBTITLE, style="Title Sub")
     doc.add_paragraph(AUTHOR, style="Title Author")
 

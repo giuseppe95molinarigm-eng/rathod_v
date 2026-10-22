@@ -20,7 +20,8 @@ PAGES=$(( (PAGES + 1) / 2 * 2 ))          # KDP spine is based on an even count
 # the EPUB has no cover page and KDP uses the cover uploaded separately.
 KINDLE_COVER="$ROOT/cover/final/kindle_cover.jpg"
 if [ -f "$KINDLE_COVER" ]; then
-  python3 "$ROOT/scripts/build_epub.py" "$OUTDIR/${NAME}_-_Kindle.epub" "$KINDLE_COVER"
+  COVER_ALT="Cover of The Menopause Diet for Busy Women: the title in green and coral above a table of healthy food, with a salmon and quinoa bowl, berries, a green smoothie and chickpeas" \
+    python3 "$ROOT/scripts/build_epub.py" "$OUTDIR/${NAME}_-_Kindle.epub" "$KINDLE_COVER"
 else
   python3 "$ROOT/scripts/build_epub.py" "$OUTDIR/${NAME}_-_Kindle.epub"
 fi
