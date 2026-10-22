@@ -24,7 +24,7 @@ TITLE = "The Menopause Diet for Busy Women"
 SUBTITLE = ("Quick, Delicious Recipes and a 12-Week Meal Plan to Boost Energy, "
             "Sleep Better and Feel Like Yourself Again")
 AUTHOR = "Neha Menon"
-PRINTABLES = "[website address to be added]"
+PRINTABLES = "[nehamenon.com/printables](https://nehamenon.com/printables)"
 
 LABEL = {"summary": "Chapter Summary", "try": "Try This Week",
          "evidence": "What the Evidence Says", "note": "Good to Know",
@@ -138,7 +138,7 @@ for path in files:
     while i < len(rest):
         line = rest[i].rstrip()
         s = line.strip()
-        if s == "@newpage":
+        if s in ("@newpage", "@qr"):
             i += 1
             continue
         if line.startswith(":::"):
@@ -229,6 +229,7 @@ for path in files:
 
 # printable note for Kindle readers near the front
 text = "\n".join(md)
+text = text.replace("**nehamenon.com/printables**", f"**{PRINTABLES}**")
 text = text.replace(
     "Page numbers refer to the first page of each recipe.",
     "Tap a recipe name to go straight to it.")

@@ -1,5 +1,7 @@
 @front Appendices
-These tools are designed to be used. Paperback readers can photocopy them or write in the book; e-book readers can download the free printable versions at **[website address to be added]**.
+These tools are designed to be used. Paperback readers can photocopy them or write in the book; e-book readers can download the free printable versions at **nehamenon.com/printables**.
+
+@qr
 
 ## Appendix A: Symptom & Mood Tracker
 

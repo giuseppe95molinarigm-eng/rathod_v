@@ -31,6 +31,7 @@ cp "$ROOT"/printables/*.md "$WORK/"
 cp "$ROOT/manuscript/71_appendices.md" "$WORK/"
 PRINT_OUT="$WORK/52_ch18.md" python3 "$ROOT/scripts/build_mealplan.py" >/dev/null
 sed -i 's/^These tools are designed to be used\. .*/These tools are designed to be used: print as many copies as you like./' "$WORK/71_appendices.md"
+sed -i '/^@qr$/d' "$WORK/71_appendices.md"
 # US Letter (the main printable) and an A4 version
 for PAPER in letter a4; do
   OUTNAME="${NAME}_-_Printables_$( [ "$PAPER" = letter ] && echo US_Letter || echo A4 )"

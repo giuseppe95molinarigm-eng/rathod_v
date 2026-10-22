@@ -890,6 +890,15 @@ def render_body(lines):
             NEWPAGE["on"] = True
             i += 1
             continue
+        if line.strip() == "@qr":
+            # QR code for the printables link (print only)
+            flush()
+            q = doc.add_paragraph(style="Center Small")
+            q.paragraph_format.keep_with_next = False
+            q.add_run().add_picture(os.path.join(ROOT, "assets", "qr_printables.png"),
+                                    width=Inches(1.1))
+            i += 1
+            continue
         if line.startswith("@recipe "):
             flush()
             close_snack()
