@@ -32,12 +32,15 @@ from docx.shared import Inches, Pt, RGBColor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.environ.get("BOOK_SRC", os.path.join(ROOT, "manuscript"))
+# PAPER=letter or PAPER=a4 lays out a standalone printable (the Printables
+# PDF): that paper size, even margins, no running heads, no blank pages
+PAPER = {"letter": (8.5, 11), "a4": (8.27, 11.69)}.get(os.environ.get("PAPER", ""))
 OUT = sys.argv[1]
 PAGES = json.load(open(sys.argv[2])) if len(sys.argv) > 2 and os.path.exists(sys.argv[2]) else {}
 
 TITLE = "The Menopause Diet for Busy Women"
-SUBTITLE = ("Quick, Delicious Recipes and a Simple Meal Plan to Balance Hormones, "
-            "Boost Energy and Feel Like Yourself Again")
+SUBTITLE = ("Quick, Delicious Recipes and a 12-Week Meal Plan to Boost Energy, "
+            "Sleep Better and Feel Like Yourself Again")
 AUTHOR = "Neha Menon"
 
 BODY_FONT = "Cambria"
@@ -214,6 +217,14 @@ s = new_style("Title Author")
 set_font(s, HEAD_FONT, 13, bold=True, color=DARK)
 para_fmt(s, after=4, align=WD_ALIGN_PARAGRAPH.CENTER)
 
+if PAPER:
+    # printables: tighter type so each meal-plan week fits on one page
+    for name, size, line in (("Normal", 9.5, 1.15), ("Table Text", 8.5, 1.05),
+                             ("Check Item", 9.5, 1.12), ("Box Text", 9, 1.1)):
+        set_font(styles[name], BODY_FONT, size)
+        styles[name].paragraph_format.line_spacing = line
+    styles["Normal"].paragraph_format.space_after = Pt(4)
+
 toc1 = styles["TOC 1"] if "TOC 1" in [x.name for x in styles] else new_style("TOC 1")
 set_font(toc1, BODY_FONT, 10.5)
 para_fmt(toc1, after=4, line=1.15, align=WD_ALIGN_PARAGRAPH.LEFT)
@@ -223,7 +234,8 @@ toc1.paragraph_format.tab_stops.add_tab_stop(Inches(4.6), WD_TAB_ALIGNMENT.RIGHT
 # Settings: mirrored margins, odd/even headers, hyphenation
 settings = doc.settings.element
 for tag in ("w:mirrorMargins", "w:evenAndOddHeaders"):
-    settings.insert(0, OxmlElement(tag))
+    if not PAPER:
+        settings.insert(0, OxmlElement(tag))
 hyph = OxmlElement("w:autoHyphenation")
 settings.append(hyph)
 lang = OxmlElement("w:lang")
@@ -236,6 +248,12 @@ styles["Normal"].element.get_or_add_rPr().append(lang)
 
 
 def setup_page(sec):
+    if PAPER:
+        sec.page_width, sec.page_height = Inches(PAPER[0]), Inches(PAPER[1])
+        for side in ("top", "bottom", "left", "right"):
+            setattr(sec, side + "_margin", Inches(0.6))
+        sec.header_distance = sec.footer_distance = Inches(0.4)
+        return
     sec.page_width = Inches(6)
     sec.page_height = Inches(9)
     sec.top_margin = Inches(0.75)
@@ -318,6 +336,8 @@ def configure_section(sec, recto_text, verso_text, numbers=True, first_blank=Tru
     """Headers: odd (recto) = recto_text, even (verso) = verso_text.
     The first page of the section has no running header."""
     setup_page(sec)
+    if PAPER:
+        recto_text = verso_text = ""
     sec.different_first_page_header_footer = first_blank
     header_text(sec.header, recto_text, WD_ALIGN_PARAGRAPH.RIGHT)
     header_text(sec.even_page_header, verso_text, WD_ALIGN_PARAGRAPH.LEFT)
@@ -335,7 +355,7 @@ def new_section(start=WD_SECTION.ODD_PAGE):
     if not first_section_used:
         first_section_used = True
         return doc.sections[0]
-    sec = doc.add_section(start)
+    sec = doc.add_section(WD_SECTION.NEW_PAGE if PAPER else start)
     # a new section copies the previous one's page numbering; keep the format
     # but never the restart value, so numbering runs on continuously
     el = sec._sectPr.find(qn("w:pgNumType"))
@@ -485,7 +505,7 @@ def row_flags(row, header=False):
         trpr.append(el)
 
 
-TEXT_WIDTH = 6 - 0.8 - 0.6
+TEXT_WIDTH = PAPER[0] - 1.2 if PAPER else 6 - 0.8 - 0.6
 
 
 def add_table(rows):
@@ -582,6 +602,12 @@ def add_box(kind, title, lines):
             q.paragraph_format.left_indent = Inches(0.18)
             q.paragraph_format.first_line_indent = Inches(-0.14)
             add_inline(q, "•  " + line[2:])
+        elif re.match(r"\d+\. ", line):
+            q = c.add_paragraph(style="Box Text")
+            q.paragraph_format.left_indent = Inches(0.22)
+            q.paragraph_format.first_line_indent = Inches(-0.18)
+            num, _, rest = line.partition(" ")
+            add_inline(q, num + "  " + rest)
         elif line.startswith("[ ] "):
             q = c.add_paragraph(style="Box Text")
             q.paragraph_format.left_indent = Inches(0.22)

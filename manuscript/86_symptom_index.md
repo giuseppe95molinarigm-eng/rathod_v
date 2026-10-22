@@ -2,7 +2,8 @@
 Find it fast: the pages where each symptom is explained, and where you'll find practical help. For food strategies symptom by symptom, start with Chapter 10.
 
 - **Anxiety and low mood:** {{p:Why Your Mood Changes With Your Hormones}}, {{p:Feeding a steadier mind}}
-- **Bladder leaks and the pelvic floor:** {{p:The Muscles Nobody Talks About}}
+- **Balance and falls:** {{p:Staying Safe}}, {{p:Tree Pose}}, {{p:Day 12: Balance}}
+- **Bladder leaks and the pelvic floor:** {{p:The Muscles Nobody Talks About}}, {{p:Your pelvic floor}}
 - **Bloating and digestion:** {{p:Hot, Achy, Bloated}}, {{p:Calming an unsettled gut}}
 - **Bone loss and osteoporosis:** {{p:Your Bones Are Alive}}, {{p:Strength Training: The Habit That Pays You Back}}, {{p:Avoid rounding your spine under load}}
 - **Brain fog and memory:** {{p:Keeping Your Brain Sharp}}, {{p:Where Did That Word Go?}}, {{p:Forgetfulness, trouble concentrating}}
@@ -17,7 +18,7 @@ Find it fast: the pages where each symptom is explained, and where you'll find p
 - **Low libido:** {{p:Desire can change too}}
 - **Palpitations, itchy skin, tinnitus and frozen shoulder:** {{p:The Symptoms Nobody Warned You About}}
 - **Skin, hair and nails:** {{p:Skin, Hair and Nails}}
-- **Sleep problems:** {{p:Sleep often changes before anything else}}, {{p:Sleep: Cooler, Darker, Calmer}}, {{p:Caffeine curfews, evening meals and sleepy foods}}
-- **Stress:** {{p:Stress and the Art of Doing Nothing}}
+- **Sleep problems:** {{p:Sleep often changes before anything else}}, {{p:Sleep: Cooler, Darker, Calmer}}, {{p:Caffeine curfews, evening meals and sleepy foods}}, {{p:Script 4: Sleep Relaxation}}
+- **Stress:** {{p:Stress and the Art of Doing Nothing}}, {{p:Breathing Practices}}
 - **Vaginal dryness and painful sex:** {{p:Desire, Comfort and Connection}}, {{p:Comfort Where It Counts}}
 - **Weight and body shape:** {{p:Your Metabolism Hasn't Broken}}, {{p:The Metabolism Myth}}, {{p:Why the Middle Changes Shape}}

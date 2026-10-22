@@ -113,7 +113,7 @@ WEEKS = [
       "Cook the quinoa for Tuesday's stuffed peppers and keep it in the fridge.",
       "Check your vitamin D: is a supplement right for you? Ask at your next appointment."]),
     (5, "Balancing Blood Sugar",
-     "This week is about steady energy: never more than four or five hours without eating, protein and fiber at every meal, and a planned snack for the time of day your cravings usually strike. Try a 10-minute walk after dinner on at least three evenings.",
+     "This week is about steady energy: try not to go much longer than four or five hours without eating, protein and fiber at every meal, and a planned snack for the time of day your cravings usually strike. Try a 10-minute walk after dinner on at least three evenings.",
      ["EGGS", "APPLE", "TRAIL"],
      [("OATS", "LO:CHILI", "MOROC"), ("MUFF", "CHICK", "BOLO"), ("OATS", "CHICK", "SHRIMP"),
       ("MUFF", "CHICK", "LO:BOLO"), ("OATS", "LO:MOROC", "PEANUT"), ("CHILLA", "LO:PEANUT", "SALMON"),
@@ -123,7 +123,7 @@ WEEKS = [
       "Set up the slow cooker for Monday's Moroccan chicken.",
       "Roast a batch of trail mix and boil eggs."]),
     (6, "Omega-3s and Mood",
-     "This week brings oily fish to the table at least twice, plus walnuts, flaxseed and chia every day. Take a moment each evening for the gratitude note from Chapter 5, and notice whether your mood feels any steadier by the weekend.",
+     "This week brings oily fish to the table at least twice, plus walnuts, flaxseed and chia every day. Take a moment each evening for the gratitude note from Chapter 5. Omega-3s support heart and brain health over the long term, so notice how you feel without expecting quick changes.",
      ["SALMONBITES", "BITES", "TRAIL"],
      [("OATS", "LO:MEAT", "SALMON"), ("BOWL", "LO:SALMON", "BOLO"), ("OATS", "LO:BOLO", "COD"),
       ("BOWL", "NIC", "CURRY"), ("OATS", "LO:CURRY", "SHRIMP"), ("TOAST", "SOBA", "PEANUT"),
@@ -133,7 +133,7 @@ WEEKS = [
       "Make the Bolognese sauce and freeze half for a later week.",
       "Hard-boil eggs for Thursday's Niçoise."]),
     (7, "Sleep-Supporting Evenings",
-     "This week's dinners are a little lighter and earlier, with a calming bedtime snack if you need one. Set a 2 p.m. caffeine curfew, swap one evening drink for a Tart Cherry Evening Spritz, and try one of the evening practices from Part Six.",
+     "This week's dinners are a little lighter and earlier, with a calming bedtime snack if you need one. Try a 2 p.m. caffeine cut-off, swap one evening drink for a Tart Cherry Evening Spritz, and try one of the evening practices from Part Six.",
      ["PEAR", "CHIA", "LATTE"],
      [("MUFF", "LO:POZ", "COD"), ("SMOOTH", "SOUP", "MEAT"), ("MUFF", "LO:MEAT", "STIR"),
       ("SMOOTH", "SOUP", "CURRY"), ("MUFF", "LO:CURRY", "SALMON"), ("CONGEE", "SOUP", "PEPPER"),
@@ -143,7 +143,7 @@ WEEKS = [
       "Make chia pudding for two evenings.",
       "Start the congee on Saturday morning; it keeps for Sunday too."]),
     (8, "Happy Gut, Less Bloating",
-     "This week includes a fermented food every day (yogurt, kefir, miso) and keeps fiber steady rather than sudden. Eat slowly, take a short walk after meals, and notice which foods leave you comfortable and which don't.",
+     "This week includes a fermented food on most days (yogurt, kefir, miso) and keeps fiber steady rather than sudden. Eat slowly, take a short walk after meals, and notice which foods leave you comfortable and which don't.",
      ["KEFIR", "CHIA", "EDAMAME"],
      [("CONGEE", "LO:DAL", "SALMON"), ("BOWL", "MISO", "MOROC"), ("CONGEE", "MISO", "COD"),
       ("BOWL", "LO:MOROC", "STIR"), ("OATS", "LO:STIR", "BOLO"), ("OATS", "LO:MOROC", "SHRIMP"),
@@ -183,7 +183,7 @@ WEEKS = [
       "Look up the menus for your meals out and decide in advance if that helps you.",
       "Keep Saturday's peanut stew simple: it makes Sunday's lunch too."]),
     (12, "Your Personal Plan",
-     "This final week is built from the recipes that readers most often keep on repeat. Use it as a model for your own plan: keep the breakfasts you loved, the batch-cook habits that saved you time, and the snacks that steadied your afternoons. Appendix B has a blank weekly planner.",
+     "This final week is built from favorites many women keep on repeat. Use it as a model for your own plan: keep the breakfasts you loved, the batch-cook habits that saved you time, and the snacks that steadied your afternoons. Appendix B has a blank weekly planner.",
      ["RICOTTA", "COTTAGE", "EGGS"],
      [("BOWL", "LENT", "PEPPER"), ("CHILLA", "LO:PEPPER", "CURRY"), ("BOWL", "LO:CURRY", "SALMON"),
       ("OATS", "LENT", "BOLO"), ("OATS", "LO:BOLO", "SHRIMP"), ("CONGEE", "TACO", "POZ"),
@@ -256,7 +256,7 @@ assert not missing, f"recipes not found: {missing}"
 STAPLES = re.compile(
     r"\b(salt|pepper\b(?! flakes)|black pepper|olive oil|neutral oil|oil\b|water|"
     r"cumin|coriander|turmeric|paprika|cinnamon|oregano|chili powder|chili flakes|"
-    r"garam masala|curry powder|cayenne|ginger\b(?! ,)|bay leaf|vanilla|baking powder|"
+    r"garam masala|curry powder|cayenne|ground ginger|bay leaf|vanilla|baking powder|"
     r"dried thyme|dried rosemary|garlic powder|cocoa|everything-bagel|za'atar|nutritional yeast|ice cubes|\bice\b)",
     re.I)
 SECTIONS = [
@@ -290,6 +290,9 @@ def clean(item):
 CANON = [
     # (pattern, canonical name, section)
     (r"lemon", "lemons", "Produce"), (r"\blime", "limes", "Produce"),
+    (r"\btuna\b", "canned tuna", "Protein"),
+    (r"coconut milk", "light coconut milk", "Pantry"),
+    (r"crispbread", "seeded rye crispbreads", "Pantry"),
     (r"garlic", "garlic", "Produce"), (r"ginger", "fresh ginger", "Produce"),
     (r"carrot", "carrots", "Produce"), (r"broccoli", "broccoli", "Produce"),
     (r"scallion", "scallions", "Produce"), (r"red onion", "red onions", "Produce"),
@@ -346,6 +349,10 @@ def grocery(week_codes):
             name = clean(raw)
             if name.lower() in ("boneless", "skinless"):
                 name = clean(raw.replace(",", ""))
+            # a few items share a line with a staple or another item
+            for extra in re.findall(r"\b(tuna|pistachios)\b", raw.lower()):
+                canon, sec = canonical(extra)
+                grouped[sec].add(canon)
             if not name or STAPLES.search(name):
                 continue
             canon, sec = canonical(name)
@@ -441,13 +448,24 @@ out = []
 out.append("@chapter 18 | Weeks 1–12")
 out.append("> Twelve weeks, eighty-four days, and not one evening spent wondering what's for dinner.")
 out.append("")
-out.append("Each week has a focus, a 7-day menu, a snack plan, a shopping list and a Sunday prep plan, followed by a short check-in. The protein column shows the estimated total for each day, including the planned snacks; every day lands between about 80 and 110 grams, in line with the 2025–2030 Dietary Guidelines range of roughly 82 to 109 grams for a woman of around 150 pounds. Leftovers are planned in, so most dinners also become a lunch, and every one is eaten within the fridge time given in its recipe; where a batch has to last longer, the prep plan tells you what to freeze or make fresh midweek.")
+out.append("Each week has a focus, a 7-day menu with snacks, a shopping list and a Sunday prep plan, followed by a short check-in. The figure beside each day shows its estimated protein total, including the planned snacks; every day lands between about 80 and 110 grams, in line with the 2025–2030 Dietary Guidelines range of roughly 82 to 109 grams for a woman of around 150 pounds. Leftovers are planned in, so most dinners also become a lunch, and every one is eaten within the fridge time given in its recipe; where a batch has to last longer, the prep plan tells you what to freeze or make fresh midweek.")
 out.append("")
 out.append("Quantities are in the recipes. Before you shop, check your pantry staples: olive oil, salt and pepper, spices, garlic, stock, canned tomatoes, oats and grains. And remember, this is a menu to borrow from, not a test: swap any meal for another with a similar protein figure, and skip whatever doesn't suit you.")
 out.append("")
+# the Printables PDF gets its own layout: one week per US Letter / A4 page,
+# with the menu as a Day | Breakfast | Lunch | Dinner | Snack table
+pr = ["@front The 12-Week Meal Plan",
+      "One week per page: the menu with snacks and each day's estimated protein, "
+      "the shopping list, the Sunday prep plan and a short check-in. "
+      "Quantities and methods are in the book.", ""]
 all_totals = []
 for num, theme, focus, snacks, days, prep in WEEKS:
     out.append("@newpage")
+    pr.append("@newpage")
+    pr.append(f"## Week {num}: {theme}")
+    pr.append("")
+    pr.append("| Day@1.0 | Breakfast | Lunch | Dinner | Snack |")
+    pr.append("|---|---|---|---|---|")
     if num in PHASES:
         out.append(f"## {PHASES[num]}")
         out.append("")
@@ -472,32 +490,51 @@ for num, theme, focus, snacks, days, prep in WEEKS:
             total += sp
         all_totals.append(total)
         for c in (b, l, n):
-            if c != "FLEX":
-                used.add(c.replace("LO:", ""))
+            if c != "FLEX" and not c.startswith("LO:"):
+                used.add(c)
         used.update(chosen)
         snack_days.append(chosen)
         snack_txt = " + ".join(CODES[s] for s in chosen) or "Fruit, if you're hungry"
+        pr.append(f"| **{DAYS[d]}** <br> ≈{total} g protein | {label(b)} | {label(l)} | {label(n)} | {snack_txt} |")
         out.append(f"| {DAYS[d]} <br> ≈{total} g protein | **Breakfast:** {label(b)} <br> **Lunch:** {label(l)} <br> **Dinner:** {label(n)} <br> **Snack:** {snack_txt} |")
     out.append("")
     if any("FLEX" in day for day in days):
         out.append("**Eating out:** choose a dish built around fish, chicken, beans, eggs or tofu, add vegetables or a salad, and enjoy it. A meal out is counted at about 25 grams of protein.")
         out.append("")
+    pr.append("")
+    if any("FLEX" in day for day in days):
+        pr.append("**Eating out:** build your plate around fish, chicken, beans, eggs or tofu, plus vegetables.")
+        pr.append("")
     out.append("### Shopping list")
     out.append("")
+    pr.append("### Shopping list")
+    pr.append("")
     g = grocery(sorted(used))
     for sec in ["Produce", "Protein", "Dairy and alternatives", "Pantry", "Freezer"]:
         if g.get(sec):
             out.append(f"**{sec}:** " + "; ".join(sorted(set(g[sec]), key=str.lower)) + ".")
             out.append("")
-    out.append("### Sunday prep (60 to 90 minutes)")
+            pr.append(f"[ ] **{sec}:** " + "; ".join(sorted(set(g[sec]), key=str.lower)) + ".")
+    pr.append("")
+    # Week 10 cooks three big batches, so its prep takes longer
+    out.append("### Sunday prep (about 2½ hours)" if num == 10 else "### Sunday prep (60 to 90 minutes)")
     out.append("")
     freeze, midweek = storage_notes(num, days, prep, snack_days)
+    pr.append("### Sunday prep (about 2½ hours)" if num == 10 else "### Sunday prep (60 to 90 minutes)")
+    pr.append("")
     for i, step in enumerate(prep + freeze, 1):
         out.append(f"{i}. {step}")
+        pr.append(f"{i}. {step}")
     out.append("")
+    pr.append("")
     if midweek:
         out.append("**Midweek top-up:** " + " ".join(midweek))
         out.append("")
+        pr.append("**Midweek top-up:** " + " ".join(midweek))
+        pr.append("")
+    pr.append("**Check-in:** Energy (1–10): ____   Sleep: ____   Symptoms that changed: ______________   "
+              "Meals to keep: ______________   One win: ______________")
+    pr.append("")
     out.append(":::try End-of-week check-in")
     out.append("[ ] How was my energy this week, from 1 to 10?")
     out.append("[ ] How did I sleep, and did anything help?")
@@ -516,4 +553,6 @@ out.append(":::")
 out.append("")
 out.append(">> Food is half of the plan. The other half happens on the floor of your living room, in thirty days of yoga, strength and calm.")
 open(os.path.join(MS, "52_ch18.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
+if os.environ.get("PRINT_OUT"):
+    open(os.environ["PRINT_OUT"], "w", encoding="utf-8").write("\n".join(pr) + "\n")
 print("wrote 52_ch18.md; daily protein range", min(all_totals), "-", max(all_totals))

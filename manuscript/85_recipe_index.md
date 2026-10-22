@@ -72,13 +72,15 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 
 ## By Label
 
+"(option)" means the recipe fits this label only with the swap shown on its page.
+
 ### Gluten-free (GF)
 
 - Apple Slices with Almond Butter & Cinnamon, {{r:Apple Slices with Almond Butter & Cinnamon}}
 - Baked Cinnamon Pear with Walnuts, {{r:Baked Cinnamon Pear with Walnuts}}
 - Baked Cod with Tomatoes, Olives & Capers, {{r:Baked Cod with Tomatoes, Olives & Capers}}
 - Baked Kale Chips, {{r:Baked Kale Chips}}
-- Banana-Oat Mini Muffins, {{r:Banana-Oat Mini Muffins}}
+- Banana-Oat Mini Muffins (option), {{r:Banana-Oat Mini Muffins}}
 - Berry Greek Yogurt Bark, {{r:Berry Greek Yogurt Bark}}
 - Besan Chilla with Mint Yogurt, {{r:Besan Chilla with Mint Yogurt}}
 - Black Bean, Corn & Avocado Tacos, {{r:Black Bean, Corn & Avocado Tacos}}
@@ -92,28 +94,28 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 - Everything-Seasoned Boiled Eggs, {{r:Everything-Seasoned Boiled Eggs}}
 - Frozen Yogurt-Dipped Blueberries, {{r:Frozen Yogurt-Dipped Blueberries}}
 - Ginger Brown Rice Congee with Soft Egg, {{r:Ginger Brown Rice Congee with Soft Egg}}
-- Ginger-Garlic Tofu & Vegetable Stir-Fry, {{r:Ginger-Garlic Tofu & Vegetable Stir-Fry}}
-- Golden Flax & Berry Overnight Oats, {{r:Golden Flax & Berry Overnight Oats}}
+- Ginger-Garlic Tofu & Vegetable Stir-Fry (option), {{r:Ginger-Garlic Tofu & Vegetable Stir-Fry}}
+- Golden Flax & Berry Overnight Oats (option), {{r:Golden Flax & Berry Overnight Oats}}
 - Golden Turmeric Latte, {{r:Golden Turmeric Latte}}
-- Greek Turkey Meatballs with Tzatziki, {{r:Greek Turkey Meatballs with Tzatziki}}
-- Greek Yogurt Power Bowl with Walnuts & Seeds, {{r:Greek Yogurt Power Bowl with Walnuts & Seeds}}
+- Greek Turkey Meatballs with Tzatziki (option), {{r:Greek Turkey Meatballs with Tzatziki}}
+- Greek Yogurt Power Bowl with Walnuts & Seeds (option), {{r:Greek Yogurt Power Bowl with Walnuts & Seeds}}
 - Green Glow Protein Smoothie, {{r:Green Glow Protein Smoothie}}
 - Hummus & Rainbow Crudités Box, {{r:Hummus & Rainbow Crudités Box}}
 - Kefir Berry Shake, {{r:Kefir Berry Shake}}
-- Lemon Herb Chicken Grain Bowl, {{r:Lemon Herb Chicken Grain Bowl}}
-- Lentil Bolognese with Whole-Grain Pasta, {{r:Lentil Bolognese with Whole-Grain Pasta}}
+- Lemon Herb Chicken Grain Bowl (option), {{r:Lemon Herb Chicken Grain Bowl}}
+- Lentil Bolognese with Whole-Grain Pasta (option), {{r:Lentil Bolognese with Whole-Grain Pasta}}
 - Mediterranean Lentil & Roasted Vegetable Salad, {{r:Mediterranean Lentil & Roasted Vegetable Salad}}
 - Mini Caprese Skewers, {{r:Mini Caprese Skewers}}
-- Miso-Glazed Tofu Buddha Bowl, {{r:Miso-Glazed Tofu Buddha Bowl}}
+- Miso-Glazed Tofu Buddha Bowl (option), {{r:Miso-Glazed Tofu Buddha Bowl}}
 - Quinoa & Black Bean Stuffed Peppers, {{r:Quinoa & Black Bean Stuffed Peppers}}
 - Quinoa Tabbouleh with Chickpeas, {{r:Quinoa Tabbouleh with Chickpeas}}
 - Seeded Flax Crackers, {{r:Seeded Flax Crackers}}
-- Sesame Edamame Noodle Bowl, {{r:Sesame Edamame Noodle Bowl}}
+- Sesame Edamame Noodle Bowl (option), {{r:Sesame Edamame Noodle Bowl}}
 - Sheet-Pan Salmon with Broccoli & Sweet Potato, {{r:Sheet-Pan Salmon with Broccoli & Sweet Potato}}
 - Shrimp & Vegetable Fajita Bowls, {{r:Shrimp & Vegetable Fajita Bowls}}
 - Slow-Cooker Moroccan Chicken with Apricots, {{r:Slow-Cooker Moroccan Chicken with Apricots}}
-- Smashed Chickpea Salad Sandwich, {{r:Smashed Chickpea Salad Sandwich}}
-- Smoked Salmon & Avocado Rye Toast, {{r:Smoked Salmon & Avocado Rye Toast}}
+- Smashed Chickpea Salad Sandwich (option), {{r:Smashed Chickpea Salad Sandwich}}
+- Smoked Salmon & Avocado Rye Toast (option), {{r:Smoked Salmon & Avocado Rye Toast}}
 - Smoked Salmon Cucumber Bites, {{r:Smoked Salmon Cucumber Bites}}
 - Spiced Pumpkin Seed Trail Mix, {{r:Spiced Pumpkin Seed Trail Mix}}
 - Spiced Red Lentil Dal with Spinach, {{r:Spiced Red Lentil Dal with Spinach}}
@@ -125,7 +127,7 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 - Turmeric Tofu & Veggie Scramble, {{r:Turmeric Tofu & Veggie Scramble}}
 - Tuscan White Bean & Kale Soup, {{r:Tuscan White Bean & Kale Soup}}
 - Vanilla Chia Pudding Cups, {{r:Vanilla Chia Pudding Cups}}
-- Walnut-Date Energy Bites, {{r:Walnut-Date Energy Bites}}
+- Walnut-Date Energy Bites (option), {{r:Walnut-Date Energy Bites}}
 - West African Peanut & Sweet Potato Stew, {{r:West African Peanut & Sweet Potato Stew}}
 - White Bean & Rosemary Dip, {{r:White Bean & Rosemary Dip}}
 
@@ -134,7 +136,7 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 - Apple Slices with Almond Butter & Cinnamon, {{r:Apple Slices with Almond Butter & Cinnamon}}
 - Baked Cod with Tomatoes, Olives & Capers, {{r:Baked Cod with Tomatoes, Olives & Capers}}
 - Baked Kale Chips, {{r:Baked Kale Chips}}
-- Besan Chilla with Mint Yogurt, {{r:Besan Chilla with Mint Yogurt}}
+- Besan Chilla with Mint Yogurt (option), {{r:Besan Chilla with Mint Yogurt}}
 - Black Bean, Corn & Avocado Tacos, {{r:Black Bean, Corn & Avocado Tacos}}
 - Chicken Pozole Verde, {{r:Chicken Pozole Verde}}
 - Chili-Lime Edamame, {{r:Chili-Lime Edamame}}
@@ -145,14 +147,16 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 - Everything-Seasoned Boiled Eggs, {{r:Everything-Seasoned Boiled Eggs}}
 - Ginger Brown Rice Congee with Soft Egg, {{r:Ginger Brown Rice Congee with Soft Egg}}
 - Ginger-Garlic Tofu & Vegetable Stir-Fry, {{r:Ginger-Garlic Tofu & Vegetable Stir-Fry}}
+- Golden Flax & Berry Overnight Oats (option), {{r:Golden Flax & Berry Overnight Oats}}
 - Golden Turmeric Latte, {{r:Golden Turmeric Latte}}
-- Greek Turkey Meatballs with Tzatziki, {{r:Greek Turkey Meatballs with Tzatziki}}
-- Green Glow Protein Smoothie, {{r:Green Glow Protein Smoothie}}
+- Greek Turkey Meatballs with Tzatziki (option), {{r:Greek Turkey Meatballs with Tzatziki}}
+- Green Glow Protein Smoothie (option), {{r:Green Glow Protein Smoothie}}
 - Hummus & Rainbow Crudités Box, {{r:Hummus & Rainbow Crudités Box}}
 - Lemon Herb Chicken Grain Bowl, {{r:Lemon Herb Chicken Grain Bowl}}
 - Lentil Bolognese with Whole-Grain Pasta, {{r:Lentil Bolognese with Whole-Grain Pasta}}
-- Mediterranean Lentil & Roasted Vegetable Salad, {{r:Mediterranean Lentil & Roasted Vegetable Salad}}
+- Mediterranean Lentil & Roasted Vegetable Salad (option), {{r:Mediterranean Lentil & Roasted Vegetable Salad}}
 - Miso-Glazed Tofu Buddha Bowl, {{r:Miso-Glazed Tofu Buddha Bowl}}
+- Quinoa & Black Bean Stuffed Peppers (option), {{r:Quinoa & Black Bean Stuffed Peppers}}
 - Quinoa Tabbouleh with Chickpeas, {{r:Quinoa Tabbouleh with Chickpeas}}
 - Seeded Flax Crackers, {{r:Seeded Flax Crackers}}
 - Sesame Edamame Noodle Bowl, {{r:Sesame Edamame Noodle Bowl}}
@@ -176,6 +180,8 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 
 ### Vegetarian (V)
 
+Every recipe in the Vegan list is also vegetarian.
+
 - Baked Cinnamon Pear with Walnuts, {{r:Baked Cinnamon Pear with Walnuts}}
 - Banana-Oat Mini Muffins, {{r:Banana-Oat Mini Muffins}}
 - Berry Greek Yogurt Bark, {{r:Berry Greek Yogurt Bark}}
@@ -198,7 +204,7 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 
 - Apple Slices with Almond Butter & Cinnamon, {{r:Apple Slices with Almond Butter & Cinnamon}}
 - Baked Kale Chips, {{r:Baked Kale Chips}}
-- Besan Chilla with Mint Yogurt, {{r:Besan Chilla with Mint Yogurt}}
+- Besan Chilla with Mint Yogurt (option), {{r:Besan Chilla with Mint Yogurt}}
 - Black Bean, Corn & Avocado Tacos, {{r:Black Bean, Corn & Avocado Tacos}}
 - Chili-Lime Edamame, {{r:Chili-Lime Edamame}}
 - Coconut Chickpea & Vegetable Curry, {{r:Coconut Chickpea & Vegetable Curry}}
@@ -206,13 +212,13 @@ Page numbers refer to the first page of each recipe. Labels marked "option" in a
 - Cucumber-Mint Cooling Water, {{r:Cucumber-Mint Cooling Water}}
 - Dark Chocolate & Almond Clusters, {{r:Dark Chocolate & Almond Clusters}}
 - Ginger-Garlic Tofu & Vegetable Stir-Fry, {{r:Ginger-Garlic Tofu & Vegetable Stir-Fry}}
-- Golden Flax & Berry Overnight Oats, {{r:Golden Flax & Berry Overnight Oats}}
+- Golden Flax & Berry Overnight Oats (option), {{r:Golden Flax & Berry Overnight Oats}}
 - Golden Turmeric Latte, {{r:Golden Turmeric Latte}}
 - Hummus & Rainbow Crudités Box, {{r:Hummus & Rainbow Crudités Box}}
 - Lentil Bolognese with Whole-Grain Pasta, {{r:Lentil Bolognese with Whole-Grain Pasta}}
-- Mediterranean Lentil & Roasted Vegetable Salad, {{r:Mediterranean Lentil & Roasted Vegetable Salad}}
+- Mediterranean Lentil & Roasted Vegetable Salad (option), {{r:Mediterranean Lentil & Roasted Vegetable Salad}}
 - Miso-Glazed Tofu Buddha Bowl, {{r:Miso-Glazed Tofu Buddha Bowl}}
-- Quinoa & Black Bean Stuffed Peppers, {{r:Quinoa & Black Bean Stuffed Peppers}}
+- Quinoa & Black Bean Stuffed Peppers (option), {{r:Quinoa & Black Bean Stuffed Peppers}}
 - Quinoa Tabbouleh with Chickpeas, {{r:Quinoa Tabbouleh with Chickpeas}}
 - Seeded Flax Crackers, {{r:Seeded Flax Crackers}}
 - Sesame Edamame Noodle Bowl, {{r:Sesame Edamame Noodle Bowl}}

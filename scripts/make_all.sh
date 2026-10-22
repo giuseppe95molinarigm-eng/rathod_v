@@ -28,11 +28,16 @@ fi
 
 WORK="$(mktemp -d)"
 cp "$ROOT"/printables/*.md "$WORK/"
-cp "$ROOT/manuscript/52_ch18.md" "$ROOT/manuscript/71_appendices.md" "$WORK/"
+cp "$ROOT/manuscript/71_appendices.md" "$WORK/"
+PRINT_OUT="$WORK/52_ch18.md" python3 "$ROOT/scripts/build_mealplan.py" >/dev/null
 sed -i 's/^These tools are designed to be used\. .*/These tools are designed to be used: print as many copies as you like./' "$WORK/71_appendices.md"
-BOOK_SRC="$WORK" python3 "$ROOT/scripts/build_book.py" "$WORK/${NAME}_-_Printables.docx" >/dev/null
-soffice --headless --convert-to "$PDF_FILTER" --outdir "$OUTDIR" "$WORK/${NAME}_-_Printables.docx" >/dev/null 2>&1
-python3 "$ROOT/scripts/fix_trim.py" "$OUTDIR/${NAME}_-_Printables.pdf"
-rm -rf "$WORK" "$OUTDIR/${NAME}_-_Printables.toc.json"
+# US Letter (the main printable) and an A4 version
+for PAPER in letter a4; do
+  OUTNAME="${NAME}_-_Printables_$( [ "$PAPER" = letter ] && echo US_Letter || echo A4 )"
+  PAPER=$PAPER BOOK_SRC="$WORK" python3 "$ROOT/scripts/build_book.py" "$WORK/$OUTNAME.docx" >/dev/null
+  soffice --headless --convert-to "$PDF_FILTER" --outdir "$OUTDIR" "$WORK/$OUTNAME.docx" >/dev/null 2>&1
+  rm -f "$WORK/$OUTNAME.toc.json"
+done
+rm -rf "$WORK" "$OUTDIR/${NAME}_-_Printables.pdf"
 python3 -c "import sys; p=int(sys.argv[1]); print(f'cover spec: {p} pages, spine {p*0.002252:.3f} in, full wrap {12.25+p*0.002252:.3f} x 9.25 in')" "$PAGES"
 ls -1 "$OUTDIR"

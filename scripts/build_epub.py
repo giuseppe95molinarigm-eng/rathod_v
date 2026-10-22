@@ -21,8 +21,8 @@ OUT = sys.argv[1]
 COVER = sys.argv[2] if len(sys.argv) > 2 else None
 
 TITLE = "The Menopause Diet for Busy Women"
-SUBTITLE = ("Quick, Delicious Recipes and a Simple Meal Plan to Balance Hormones, "
-            "Boost Energy and Feel Like Yourself Again")
+SUBTITLE = ("Quick, Delicious Recipes and a 12-Week Meal Plan to Boost Energy, "
+            "Sleep Better and Feel Like Yourself Again")
 AUTHOR = "Neha Menon"
 PRINTABLES = "[website address to be added]"
 
@@ -236,8 +236,8 @@ text = text.replace(
     "Find it fast: the pages where each symptom is explained",
     "Find it fast: the sections where each symptom is explained")
 text = text.replace(
-    "Paperback readers can photocopy them or write in the book; Kindle readers can download",
-    "Kindle readers can download")
+    "Paperback readers can photocopy them or write in the book; e-book readers can download",
+    "E-book readers can download")
 
 CSS = """
 body { font-family: serif; line-height: 1.45; }

@@ -61,7 +61,7 @@
 
 **Progesterone and progestogens:** progesterone is a hormone made after ovulation; progestogens are medicines that act like it and protect the uterus during hormone therapy.
 
-**RDA (Recommended Dietary Allowance):** the official minimum daily amount of a nutrient that meets the needs of nearly all healthy people.
+**RDA (Recommended Dietary Allowance):** the daily amount of a nutrient set to meet the needs of nearly all healthy people. It's a benchmark, not a minimum.
 
 **Sarcopenia:** significant loss of muscle mass and strength with age.
 

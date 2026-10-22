@@ -9,10 +9,10 @@ These are the main guidelines and studies behind the information in this book. W
 - El Khoudary SR, et al. Menopause transition and cardiovascular disease risk: implications for timing of early prevention. A scientific statement from the American Heart Association. *Circulation*. 2020;142(25):e506–e532.
 - Bull FC, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. *British Journal of Sports Medicine*. 2020;54(24):1451–1462.
 - US Department of Agriculture and US Department of Health and Human Services. *Dietary Guidelines for Americans, 2025–2030*. January 2026.
-- US Preventive Services Task Force. Screening for osteoporosis to prevent fractures: recommendation statement. *JAMA*. 2025.
+- US Preventive Services Task Force. Screening for osteoporosis to prevent fractures: recommendation statement. *JAMA*. Published online January 14, 2025. doi:10.1001/jama.2024.27154.
 - Office of the US Surgeon General. *Alcohol and Cancer Risk: The U.S. Surgeon General's Advisory*. January 2025.
 - The 2020 genitourinary syndrome of menopause position statement of The North American Menopause Society. *Menopause*. 2020;27(9):976–992.
-- ESHRE, ASRM, CREWHIN and IMS Guideline Group on POI. Evidence-based guideline: premature ovarian insufficiency. *Human Reproduction Open*. 2024.
+- ESHRE, ASRM, CREWHIRL and IMS Guideline Group on POI (Panay N, et al.). Evidence-based guideline: premature ovarian insufficiency. *Human Reproduction Open*. 2024;2024(4):hoae065.
 - US Food and Drug Administration. Consumer update: Spilling the beans: how much caffeine is too much?
 - FoodSafety.gov (US Department of Health and Human Services). Leftovers and food safety; safe minimum internal temperatures.
 - National Institutes of Health, Office of Dietary Supplements. Health professional fact sheets: Calcium; Vitamin D; Iron; Magnesium; Vitamin B12; Folate.
@@ -60,11 +60,18 @@ These are the main guidelines and studies behind the information in this book. W
 - Howatson G, et al. Effect of tart cherry juice (*Prunus cerasus*) on melatonin levels and enhanced sleep quality. *European Journal of Nutrition*. 2012;51(8):909–916.
 - Hall KD, et al. Ultra-processed diets cause excess calorie intake and weight gain: an inpatient randomized controlled trial of ad libitum food intake. *Cell Metabolism*. 2019;30(1):67–77.
 
+## Parts Four and Five: Recipes and Meal Plan
+
+- The recipes and meal plan apply the guidelines listed at the start of these references, especially the Dietary Guidelines for Americans 2025–2030 and FoodSafety.gov. Protein estimates use USDA FoodData Central (see Recipes).
+
 ## Part Six: Yoga, Strength & Calm
 
 - Cramer H, et al. Yoga for menopausal symptoms: a systematic review and meta-analysis. *Maturitas*. 2018;109:13–25.
 - Bone Health & Osteoporosis Foundation. Exercise for your bone health. bonehealthandosteoporosis.org.
 - Watson SL, et al. The LIFTMOR randomized controlled trial (see Part One).
+- Piercy KL, et al. The Physical Activity Guidelines for Americans. *JAMA*. 2018;320(19):2020–2028.
+- Giangregorio LM, et al. Too Fit To Fracture: exercise recommendations for individuals with osteoporosis or osteoporotic vertebral fracture. *Osteoporosis International*. 2014;25(3):821–835.
+- Jasien JV, et al. Intraocular pressure rise in subjects with and without glaucoma during four common yoga positions. *PLoS One*. 2015;10(12):e0144505.
 
 ## Recipes
 

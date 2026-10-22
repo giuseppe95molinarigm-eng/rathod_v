@@ -9,7 +9,7 @@ Think about what you know now that you may not have known when you started. You 
 
 I hope you also know that you don't have to do any of it perfectly. The women I watched struggle through this transition didn't need perfection. They needed information, a little support, and permission to put themselves on their own to-do list. You have all three now.
 
-So keep going, at your own pace. Keep the breakfasts you loved and the strength sessions that made you feel capable. Return to the meal plan whenever life gets busy. Bring this book, or your symptom diary, to your next appointment. Talk to the women around you, because the more of us who say the word "menopause" out loud, the easier this gets for the women who come after us.
+So keep going, at your own pace. Keep the breakfasts you loved and the strength sessions that made you feel capable. Return to the meal plan whenever life gets busy. Bring this book, or your symptom diary, to your next appointment. Talk to the women around you, because the more women who say the word "menopause" out loud, the easier this gets for the women who come next.
 
 This is not the end of anything. It's the beginning of a strong, steady, deeply yours next chapter.
 

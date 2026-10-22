@@ -1,9 +1,9 @@
 @front Appendices
-These tools are designed to be used. Paperback readers can photocopy them or write in the book; Kindle readers can download the free printable versions at **[website address to be added]**.
+These tools are designed to be used. Paperback readers can photocopy them or write in the book; e-book readers can download the free printable versions at **[website address to be added]**.
 
 ## Appendix A: Symptom & Mood Tracker
 
-Fill in one column each evening. For the 1 to 5 scores, 1 means "very poor" or "very bothersome" and 5 means "very good" or "not at all." Bring a few weeks of entries to your next appointment.
+Fill in one column each evening. Score sleep quality, energy and mood from 1 (very poor) to 5 (very good). Score anxiety, brain fog, joint aches and bloating from 0 (none) to 3 (severe). Bring a few weeks of entries to your next appointment.
 
 | Week of:@1.35 | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
 |---|---|---|---|---|---|---|---|
@@ -12,10 +12,10 @@ Fill in one column each evening. For the 1 to 5 scores, 1 means "very poor" or "
 | Sleep quality (1–5) | | | | | | | |
 | Energy (1–5) | | | | | | | |
 | Mood (1–5) | | | | | | | |
-| Anxiety (1–5) | | | | | | | |
-| Brain fog (1–5) | | | | | | | |
-| Joint aches (1–5) | | | | | | | |
-| Bloating (1–5) | | | | | | | |
+| Anxiety (0–3) | | | | | | | |
+| Brain fog (0–3) | | | | | | | |
+| Joint aches (0–3) | | | | | | | |
+| Bloating (0–3) | | | | | | | |
 | Bleeding or spotting | | | | | | | |
 | Strength or yoga done | | | | | | | |
 | Alcohol and caffeine | | | | | | | |
@@ -49,7 +49,7 @@ ________________________________________________________________
 @newpage
 ## Appendix C: Master Grocery List
 
-Tick what you need before you shop. The full list, with suggestions, is in Chapter 12.
+Check off what you need before you shop. The full list, with suggestions, is in Chapter 12.
 
 **Produce:** [ ] leafy greens [ ] broccoli or cauliflower [ ] bell peppers [ ] carrots [ ] tomatoes [ ] onions and garlic [ ] fresh ginger [ ] sweet potatoes [ ] berries [ ] apples or pears [ ] lemons and limes [ ] avocados [ ] fresh herbs
 
@@ -57,7 +57,7 @@ Tick what you need before you shop. The full list, with suggestions, is in Chapt
 
 **Dairy and alternatives:** [ ] plain Greek yogurt [ ] kefir [ ] cottage cheese [ ] milk or fortified soy milk [ ] feta or other cheese
 
-**Pantry:** [ ] rolled oats [ ] quinoa or brown rice [ ] whole-grain pasta [ ] whole-grain or rye bread [ ] canned beans and chickpeas [ ] dried lentils [ ] canned tomatoes [ ] low-sodium stock [ ] nuts [ ] seeds and ground flaxseed [ ] nut butter [ ] olive oil [ ] tamari or soy sauce [ ] spices [ ] dark chocolate
+**Pantry:** [ ] rolled oats [ ] quinoa or brown rice [ ] whole-grain pasta [ ] whole-grain or rye bread [ ] canned beans and chickpeas [ ] dried lentils [ ] canned tomatoes [ ] low-sodium stock [ ] nuts [ ] seeds and ground flaxseed [ ] nut butter [ ] olive oil [ ] tamari or soy sauce [ ] spices [ ] dark chocolate [ ] chickpea flour [ ] light coconut milk [ ] miso [ ] corn tortillas [ ] canned hominy [ ] tart cherry juice
 
 **Freezer:** [ ] frozen vegetables [ ] frozen berries [ ] frozen edamame [ ] frozen fish or shrimp [ ] batch-cooked meals
 
@@ -136,6 +136,7 @@ These organizations offer reliable, evidence-based information. Website addresse
 - **NIH Office of Dietary Supplements** (ods.od.nih.gov): fact sheets on vitamins, minerals and supplements.
 - **Dietary Guidelines for Americans** (dietaryguidelines.gov) and **MyPlate** (myplate.gov).
 - **Academy of Nutrition and Dietetics** (eatright.org): find a registered dietitian near you.
+- **American Physical Therapy Association, ChoosePT** (choosept.com): find a physical therapist near you.
 - **Bone Health & Osteoporosis Foundation** (bonehealthandosteoporosis.org): bone health, exercise and fracture prevention.
 - **American Heart Association** (heart.org): heart health for women.
 - **988 Suicide & Crisis Lifeline**: call or text 988 in the United States, any time.

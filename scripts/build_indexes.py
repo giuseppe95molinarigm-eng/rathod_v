@@ -50,24 +50,32 @@ for _, course in CHAPTERS:
 
 out.append("## By Label")
 out.append("")
+out.append("\"(option)\" means the recipe fits this label only with the swap shown on its page.")
+out.append("")
 for title, code in LABELS:
     names = []
     for _, name, tags in recipes:
         if code is None:
             if any(re.fullmatch(r"\d+ min", t) for t in tags):
-                names.append(name)
-        elif any(t == code or t == f"{code} option" for t in tags):
-            names.append(name)
+                names.append((name, ""))
+        elif code in tags:
+            names.append((name, ""))
+        elif f"{code} option" in tags:
+            names.append((name, " (option)"))
     out.append(f"### {title}")
     out.append("")
-    for name in sorted(names, key=str.lower):
-        out.append(f"- {name}, {{{{r:{name}}}}}")
+    if code == "V":
+        out.append("Every recipe in the Vegan list is also vegetarian.")
+        out.append("")
+    for name, opt in sorted(names, key=lambda x: x[0].lower()):
+        out.append(f"- {name}{opt}, {{{{r:{name}}}}}")
     out.append("")
 open(os.path.join(MS, "85_recipe_index.md"), "w", encoding="utf-8").write("\n".join(out))
 
 SYMPTOMS = [
     ("Anxiety and low mood", ["Why Your Mood Changes With Your Hormones", "Feeding a steadier mind"]),
-    ("Bladder leaks and the pelvic floor", ["The Muscles Nobody Talks About"]),
+    ("Balance and falls", ["Staying Safe", "Tree Pose", "Day 12: Balance"]),
+    ("Bladder leaks and the pelvic floor", ["The Muscles Nobody Talks About", "Your pelvic floor"]),
     ("Bloating and digestion", ["Hot, Achy, Bloated", "Calming an unsettled gut"]),
     ("Bone loss and osteoporosis", ["Your Bones Are Alive", "Strength Training: The Habit That Pays You Back",
                                     "Avoid rounding your spine under load"]),
@@ -88,8 +96,8 @@ SYMPTOMS = [
     ("Palpitations, itchy skin, tinnitus and frozen shoulder", ["The Symptoms Nobody Warned You About"]),
     ("Skin, hair and nails", ["Skin, Hair and Nails"]),
     ("Sleep problems", ["Sleep often changes before anything else", "Sleep: Cooler, Darker, Calmer",
-                        "Caffeine curfews, evening meals and sleepy foods"]),
-    ("Stress", ["Stress and the Art of Doing Nothing"]),
+                        "Caffeine curfews, evening meals and sleepy foods", "Script 4: Sleep Relaxation"]),
+    ("Stress", ["Stress and the Art of Doing Nothing", "Breathing Practices"]),
     ("Vaginal dryness and painful sex", ["Desire, Comfort and Connection", "Comfort Where It Counts"]),
     ("Weight and body shape", ["Your Metabolism Hasn't Broken", "The Metabolism Myth", "Why the Middle Changes Shape"]),
 ]
