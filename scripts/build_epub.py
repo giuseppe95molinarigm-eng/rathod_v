@@ -21,8 +21,8 @@ OUT = sys.argv[1]
 COVER = sys.argv[2] if len(sys.argv) > 2 else None
 
 TITLE = "The Menopause Diet for Busy Women"
-SUBTITLE = ("Quick, Delicious Recipes and a 12-Week Meal Plan to Boost Energy, "
-            "Sleep Better and Feel Like Yourself Again")
+SUBTITLE = ("Easy Recipes, a 12-Week Meal Plan, and Simple Daily Practices "
+            "to Support Weight Management, Energy, and Wellbeing")
 AUTHOR = "Neha Menon"
 PRINTABLES = "[nehamenon.com/printables](https://nehamenon.com/printables)"
 

@@ -39,8 +39,8 @@ OUT = sys.argv[1]
 PAGES = json.load(open(sys.argv[2])) if len(sys.argv) > 2 and os.path.exists(sys.argv[2]) else {}
 
 TITLE = "The Menopause Diet for Busy Women"
-SUBTITLE = ("Quick, Delicious Recipes and a 12-Week Meal Plan to Boost Energy, "
-            "Sleep Better and Feel Like Yourself Again")
+SUBTITLE = ("Easy Recipes, a 12-Week Meal Plan, and Simple Daily Practices "
+            "to Support Weight Management, Energy, and Wellbeing")
 AUTHOR = "Neha Menon"
 
 BODY_FONT = "Cambria"
